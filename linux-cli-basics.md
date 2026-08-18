@@ -37,3 +37,9 @@ root@ngththuyen:~/documents$ cd ..
 root@ngththuyen:~$
 ```
 
+- `cat <file>`: đọc nội dung của <file> trên terminal
+- `whoami`: xem tên đăng nhập hiện tại
+- `uname -a`: xem tên OS, phiên bản kernal,.. hiện tại đang dùng
+- `man <lệnh>`: tra cứu tài liệu hướng dẫn của <lệnh>
+- `df -h`: để xem dung lượng của hệ thống hiện tại còn bao nhiêu, dùng bao nhiêu, % sử dụng. Tham số `-h` là human readable
+
