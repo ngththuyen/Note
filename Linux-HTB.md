@@ -6,16 +6,16 @@
 Linux là một hệ điều hành, tương tự như iOS, Windows hoặc Android (OS hay hệ điều hành là phần mềm quản lí các phần cứng của máy tính, tạo sự giao tiếp giữa các ứng dụng với các phần cứng). Linux có rất nhiều bản phân phối phục vụ các nhu cầu khác nhau được gọi là các "distro" như Ubuntu, Debian, Mint,..
 
 ## Các thành phần cơ bản của một OS 
-**Bootloader:** Một đoạn code chạy để hướng dẫn quá trình khởi động OS khi ta nhấn nút nguồn. Nhiệm vụ của nó là tìm OS ở đâu trên ổ cứng rồi load kernel vào RAM sau đó bàn giao quyền điều khiển cho kernel. Parrot Linux sử dụng GRUB BootLoader.
+**Bootloader:** Một đoạn code chạy để hướng dẫn quá trình khởi động OS khi ta nhấn nút nguồn. Nhiệm vụ của nó là tìm OS ở đâu trên ổ cứng rồi load kernel vào RAM sau đó bàn giao quyền điều khiển cho kernel để kernel khởi động toàn bộ hệ thống. Parrot Linux sử dụng GRUB BootLoader.
 
-Ví dụ: Hình dung Bootloader là đàn em của OS, khi bạn cần tìm gặp đại ca, thì đàn em sẽ vào gõ cửa dẫn lối cho OS ra làm việc với bạn
+Ví dụ: Hình dung Bootloader là đàn em của OS, khi bạn cần tìm gặp đại ca, thì đàn em sẽ tìm đại ca đang ở phòng nào (tìm OS trên disk), đưa đại ca lên phòng làm việc chính (load kernel vào Random Access Memory), rồi im lặng rút lui để đại ca toàn quyền xử lí công việc tiếp theo.
 
 **OS Kernel:** Là thành phần chính của hệ điều hành, là đầu mối duy nhất giao tiếp trực tiếp được với CPU/RAM/Ổ cứng/.. Kernel quyết định được:
 - App nào được dùng CPU và dùng trong bao lâu
 - Vùng RAM nào được cấp cho app nào (Như 1 vùng RAM cho Chrome, 1 vùng cho Word, Chrome nặng quá tràn ram crash thì ko ảnh hưởng gì tới Word)
 - Đọc/ghi dữ liệu nào vào ổ cứng, kết nối mạng ra sao,..
 
-Ví dụ: Khi chạy lệnh `cat file.txt`, lúc này cat phải gửi yêu cầu gọi là system call đến kernel đại loại là xin phép được đọc file, 
+Ví dụ: Khi chạy lệnh `cat file.txt`, lúc này cat phải gửi yêu cầu gọi là system call đến kernel xin phép được đọc file, kernel sau đó sẽ kiểm tra file có tồn tại ko? người dùng có được quyền đọc file này ko?, nếu hợp lệ thì kernel ra lệnh cho ổ cứng đọc dữ liệu rồi trả về cho cat hiện lên màn hình.
 
 **Daemons:** Dịch vụ chạy ở nền (chạy ngầm) được gọi là "daemons" trong Linux. Mục đích của nó là giúp những chức năng như lịch trình, in ấn và đa phương tiện hoạt động ổn định. Những chươn trình này hoạt động sau khi khởi động hoặc đăng nhập vào máy tính
 
