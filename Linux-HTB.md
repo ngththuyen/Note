@@ -23,10 +23,20 @@ Ví dụ: `sshd` giúp kết nối ssh từ xa, `crond` quản lí các tác v�
 
 **OS Shell:** Là giao diện dòng lệnh (CLI) làm vai trò trung gian giữa người dùng và OS cho phép nguời dùng ra lệnh cho OS thực hiện các tác vụ. Khi ta gửi một dòng lệnh lên thì shell sẽ phân tích lệnh đó, nếu lệnh đó có sẵn trong shell thì tự gọi system call tới kernel luôn còn lệnh thuộc chương trình khác thì shell sẽ tạo một tiến trình mới rồi chuyển sang cho kernel hiểu và thực thi. Một số shell phổ biến là Bash, Tcsh/Csh, Ksh,..
 
-**Graphics server:** Cung cấp hệ thống máy chủ đồ hoạ con gọi là "X" hay "X-server" cho phép các chương trình đồ hoạ chạy nội bộ hay từ xa.
+**Graphics Server (X-Server):** Là phần nền tảng chịu trách nhiệm vẽ đồ hoạ lên màn hình, xử lí input từ chuột/bàn phím, cửa sổ, hiển thị hình ảnh,.. Điểm đặc biệt là nó có thể chạy từ xa qua mạng, tức là ta có thể chạy máy chủ đồ hoạ từ xa rồi hiển thị giao diện trên máy tính của ta.
 
-**Window Manager:** Hay còn gọi là giao diện đồ hoạ người dùng (GUI). Có rất nhiều loại như GNOME, KDE, MATE, Unity, và Cinnamon. Một môi trường máy tính thường có nhiều ứng dụng, bao gồm trình duyệt tệp và trình duyệt web. GUI cho phép người dùng truy cập và quản lí những tính năng/dịch vụ thiết yếu hay thường xuyên sử dụng trong hệ điều hành
+Ví dụ: Khi ta click chuột trong ứng dụng sẽ có quy trình như sau
+1. Chuột gửi tín hiệu đến kernel
+2. Kernel chuyển tín hiệu đến cho X-Server
+3. X-Server tính toán toạ độ chuột (x,y) này đang nằm ở cửa sổ ứng dụng nào?
+4. X-Server gửi sự kiện click tại toạ độ (x,y) vào ứng dụng đó
+5. Ứng dụng xử lí logic (nút được bấm), rồi trả về yêu cầu cho X-Server là vẽ lại cái nút này được nhấn r
+6. X-Server vẽ pixel mới trên màn hình
 
-**Utilities:** Là những chương trình thực thi các tác vụ cụ thể cho người dùng hoặc chương trình khác
+**Window Manager:** Hay còn gọi là giao diện đồ hoạ người dùng (GUI). Là "bộ mặt" mà ta nhìn thấy hằng ngày như Icon, tab, thu nhỏ, phóng to,.. Có rất nhiều loại như GNOME, KDE, MATE, Unity, và Cinnamon. 
 
-Kiến trúc Linux
+**Utilities:** Là những chương trình nhỏ thực thi các tác vụ cụ thể và có thể kết hợp với nhiều chương trình nhỏ khác để làm việc lớn hơn. Đúng theo triết lý của Unix là "làm một việc và làm thật tốt".
+
+Ví dụ: `cat` để xem nội dung file, `grep` để tìm kiếm văn bản,.. Hình dung nó như một bộ công cụ sửa chữa gồm cờ lê, ốc, tua vít, kìm, búa.. mỗi thằng sẽ có một công dụng khác nhau. Và để tạo ra một sản phẩm tốt thì người thợ cần thuần thục sử dụng các công cụ đó theo đúng công dụng của nó.
+
+## Kiến trúc Linux
