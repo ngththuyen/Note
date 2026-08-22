@@ -48,4 +48,7 @@ Ví dụ: `cat` để xem nội dung file, `grep` để tìm kiếm văn bản,.
 
 **System Utility:** Là lớp gần người dùng nhất, cung cấp các chương trình, công cụ chúng ta tương tác hằng ngày ví dụ như trình duyệt, soạn thảo văn bản, ra lệnh,..
  
+## Phân cấp tệp tin trong Linux
+Linux 
+<img width="2576" height="1656" alt="image" src="https://github.com/user-attachments/assets/a83c3e56-4847-437c-8608-f4b19fa8a7ca" />
 
