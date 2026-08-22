@@ -40,3 +40,12 @@ Ví dụ: Khi ta click chuột trong ứng dụng sẽ có quy trình như sau
 Ví dụ: `cat` để xem nội dung file, `grep` để tìm kiếm văn bản,.. Hình dung nó như một bộ công cụ sửa chữa gồm cờ lê, ốc, tua vít, kìm, búa.. mỗi thằng sẽ có một công dụng khác nhau. Và để tạo ra một sản phẩm tốt thì người thợ cần thuần thục sử dụng các công cụ đó theo đúng công dụng của nó.
 
 ## Kiến trúc Linux
+**Hardware (Phần cứng):** Là lớp thấp nhất chỉ bao gồm những thiết bị điện tử thuần tuý như RAM, Ổ cứng, CPU,..
+
+**Kernel:** Là lõi của hệ điều hành Linux, là lớp duy nhất có khả năng giao tiếp trực tiếp với phần cứng. Bên cạnh đó kernel còn có khả năng virtualize (ảo hoá) giúp đánh lừa các tiến trình là nó đang sở hữu toàn bộ CPU/RAM của máy dù máy đang mở nhiều tiến trình cùng lúc.
+
+**Shell:** Là giao diện dòng lệnh (CLI), có khả năng đưa các dòng lệnh của người dùng cho kernel hiểu và xử lí.
+
+**System Utility:** Là lớp gần người dùng nhất, cung cấp các chương trình, công cụ chúng ta tương tác hằng ngày ví dụ như trình duyệt, soạn thảo văn bản, ra lệnh,..
+ 
+
