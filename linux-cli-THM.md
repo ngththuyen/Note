@@ -1,4 +1,3 @@
-> 18/08/26 - Viết bằng tay, chỉ dùng AI để tìm hiểu khái niệm
 ## Terminal là gì?
 Terminal là giao diện thao tác dựa vào các dòng lệnh (Command Line Interface) thay vì tương tác trực tiếp với các đồ hoạ. Nhiều chuyên gia trong lĩnh vực cybersec ưu tiên sử dụng nó vì:
 - Thao tác nhanh hơn so với việc nhấp chuột
