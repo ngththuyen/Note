@@ -5,7 +5,7 @@
 ## Giới thiệu
 Linux là một hệ điều hành, tương tự như iOS, Windows hoặc Android (OS hay hệ điều hành là phần mềm quản lí các phần cứng của máy tính, tạo sự giao tiếp giữa các ứng dụng với các phần cứng). Linux có rất nhiều bản phân phối phục vụ các nhu cầu khác nhau được gọi là các "distro" như Ubuntu, Debian, Mint,..
 
-## Các thành phần cơ bản của một OS 
+## Các thành phần cơ bản của Linux
 **Bootloader:** Một đoạn code chạy để hướng dẫn quá trình khởi động OS khi ta nhấn nút nguồn. Nhiệm vụ của nó là tìm OS ở đâu trên ổ cứng rồi load kernel vào RAM sau đó bàn giao quyền điều khiển cho kernel để kernel khởi động toàn bộ hệ thống. Parrot Linux sử dụng GRUB BootLoader.
 
 Ví dụ: Hình dung Bootloader là đàn em của OS, khi bạn cần tìm gặp đại ca, thì đàn em sẽ tìm đại ca đang ở phòng nào (tìm OS trên disk), đưa đại ca lên phòng làm việc chính (load kernel vào Random Access Memory), rồi im lặng rút lui để đại ca toàn quyền xử lí công việc tiếp theo.
@@ -17,9 +17,11 @@ Ví dụ: Hình dung Bootloader là đàn em của OS, khi bạn cần tìm gặ
 
 Ví dụ: Khi chạy lệnh `cat file.txt`, lúc này cat phải gửi yêu cầu gọi là system call đến kernel xin phép được đọc file, kernel sau đó sẽ kiểm tra file có tồn tại ko? người dùng có được quyền đọc file này ko?, nếu hợp lệ thì kernel ra lệnh cho ổ cứng đọc dữ liệu rồi trả về cho cat hiện lên màn hình.
 
-**Daemons:** Dịch vụ chạy ở nền (chạy ngầm) được gọi là "daemons" trong Linux. Mục đích của nó là giúp những chức năng như lịch trình, in ấn và đa phương tiện hoạt động ổn định. Những chươn trình này hoạt động sau khi khởi động hoặc đăng nhập vào máy tính
+**Daemons:** Dịch vụ chạy ở nền (chạy ngầm) được gọi là "daemons" trong Linux. Mục đích của nó là giúp những chức năng như lịch trình, in ấn và đa phương tiện hoạt động ổn định. Những chương trình này hoạt động sau khi khởi động hoặc đăng nhập vào máy tính, thường có đuôi `d` ở cuối tên.
 
-**OS Shell:** Là giao diện dòng lệnh (CLI) cho phép nguời dùng ra lệnh cho hệ điều hành thực hiện các tác vụ. Một số shell phổ biến là Bash, Tcsh/Csh, Ksh,..
+Ví dụ: `sshd` giúp kết nối ssh từ xa, `crond` quản lí các tác vụ được lên lịch, `cupsd` quản lí máy in, `NetworkManager` quản lí kết nối mạng
+
+**OS Shell:** Là giao diện dòng lệnh (CLI) làm vai trò trung gian giữa người dùng và OS cho phép nguời dùng ra lệnh cho OS thực hiện các tác vụ. Khi ta gửi một dòng lệnh lên thì shell sẽ phân tích lệnh đó, nếu lệnh đó có sẵn trong shell thì tự gọi system call tới kernel luôn còn lệnh thuộc chương trình khác thì shell sẽ tạo một tiến trình mới rồi chuyển sang cho kernel hiểu và thực thi. Một số shell phổ biến là Bash, Tcsh/Csh, Ksh,..
 
 **Graphics server:** Cung cấp hệ thống máy chủ đồ hoạ con gọi là "X" hay "X-server" cho phép các chương trình đồ hoạ chạy nội bộ hay từ xa.
 
