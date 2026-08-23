@@ -37,6 +37,12 @@ Ngày nay, do nhu cầu sử dụng thiết bị của con người quá lớn n
 
 <p align="center"> <img width="736" height="177" alt="image" src="https://github.com/user-attachments/assets/8b41d349-5c00-4702-86b2-74d3ccbf6497" /> </p>
 
+### Địa chỉ MAC
+Mỗi thiêt bị trong 1 mạng sẽ luôn có 1 giao diện mạng vật lý (Physical network interface), nó là 1 vi mạch nằm trong bo mạch chủ của thiết bị. Nó là thành phần linh kiện giúp định danh được thiết bị được sản xuất bởi nhà máy nào và nó được gọi là địa chỉ MAC. Địa chỉ MAC gồm 12 kí tự thuộc hệ thập lục phân (hệ cơ số gồm 16 kí tự trong máy tính) được chia thành từng cặp và phân tách bởi dấu 2 chấm. Ví dụ như ảnh dưới, 6 kí tự đầu tiên sẽ biểu diễn thông tin nhà máy sản xuất và 6 kí tự còn lại là các con số độc bản của thiết bị.
+
+<img width="1140" height="669" alt="image" src="https://github.com/user-attachments/assets/5bd16e8e-c723-441b-bfb4-0eb5f998a9b4" />
+
+
 
 
 
