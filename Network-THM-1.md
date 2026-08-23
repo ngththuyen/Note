@@ -42,7 +42,13 @@ Mỗi thiêt bị trong 1 mạng sẽ luôn có 1 giao diện mạng vật lý (
 
 <img width="1140" height="669" alt="image" src="https://github.com/user-attachments/assets/5bd16e8e-c723-441b-bfb4-0eb5f998a9b4" />
 
+## Ping (ICMP)
 
+Là một lệnh cơ bản có sẵn trong Linux và Windows, nó sử dụng các gói tin có giao thức ICMP (Internet Control Message Protocol) để kiểm tra khả năng kết nối giữa các thiết bị với nhau trong mạng. Thời gian để gói tin ICMP đến thiết bị khác rồi về được đo bằng ping.
+
+<p align="center"><img width="577" height="263" alt="image" src="https://github.com/user-attachments/assets/08e403ea-a448-4f8b-9d2e-d4cf395321cd" /></p>
+
+Như hình trên thì ta ping tới IP `192.168.1.254` và số liệu thu được qua 6 gói tin kiểm thử có thời gian trung bình là 4.16ms. Tức là việc kết nối giữa thiết bị của ta với thiết bị mang IP kia sẽ có thời gian trung bình là 4.16ms mỗi gói tin.
 
 
 
