@@ -1,5 +1,5 @@
 ## Networking là gì?
-Network đơn giản là các thứ được kết nối lại với nhau, ví dụ như một mạng lưới kết nối trao đổi thư giữa Alice/Bob/Jim như bên dưới, các mạng lưới điện được kết nối giữa các thành phố và nhà máy hay các cung đường giao thông được nối với nhau. Trong lĩnh vực CNTT, Networking (hay còn được gọi là mạng máy tính) cũng vận hành theo cách tương tự, nó kết nối các thiết bị lại với nhau tạo nên một mạng lưới truyền tải thông tin ở quy mô nhỏ hoặc bao quát toàn thế giới.
+Network đơn giản là các thứ được kết nối lại với nhau, ví dụ như một mạng lưới kết nối trao đổi thư giữa Alice/Bob/Jim như bên dưới, các mạng lưới điện được kết nối giữa các thành phố và nhà máy hay các cung đường giao thông được nối với nhau. Trong lĩnh vực CNTT, Computer Networking (hay còn được gọi là mạng máy tính) cũng vận hành theo cách tương tự, nó kết nối các thiết bị lại với nhau tạo nên một mạng lưới truyền tải thông tin ở quy mô nhỏ hoặc bao quát toàn thế giới.
 
 <p align="center"><img width="676" height="475" alt="image" src="https://github.com/user-attachments/assets/03695679-34f2-4707-a4b3-9fa971184f3b" /> </p>
 
