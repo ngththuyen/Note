@@ -31,5 +31,20 @@ Cuối cùng, vì lượng dữ liệu không tập trung đông đúc vào mộ
 
 <p align="center"><img width="560" height="475" alt="image" src="https://github.com/user-attachments/assets/f8c21efa-074c-45c9-b41d-6f4c47cbda03" /> </p>
 
+## Switch là gì?
+Switch là thiết bị chuyên dụng được dùng để kết nối các thiết bị lại với nhau bằng cáp Ethernet. Những thiết bị này được cắm vào các cổng (port) của Switch, một Switch tuỳ quy mô sử dụng sẽ có số cổng khác nhau ví dụ như ở quy mô phòng học máy tính thì thường có từ 24 cho tới 48 cổng. 
+
+Switch có hiệu năng vượt trội hơn so với các thiết bị cùng loại như Hub hay Repeater vì nó xây một bảng ghi nhớ địa chỉ MAC (MAC Address Table). Nó có thể biết được là cổng này đang kết nối với địa chỉ MAC của máy nào, nên khi nhận được gói tin thì Switch có thể truyền tới đúng máy giúp tối ưu lưu lượng còn các thiết bị khác thì thường truyền cho tất cả các máy đang kết nối luôn.
+
+<p align="center"><img width="760" height="475" alt="image" src="https://github.com/user-attachments/assets/4421f73f-35da-496a-ad4b-78c6b5c96ca2" /></p>
+
+Bên cạnh đó, Router và Switch có thể kết nối lại với nhau, điều này cho phép tăng cường khả năng dự phòng trong một mạng lưới khi không phụ thuộc vào một nhánh chính mà ta có thể tách ra nhiều nhánh nhỏ, nếu như Switch bên này có vấn đề gì đó thì không ảnh hưởng tới các bên còn lại. Tuy làm việc này có thể tăng lượng thời gian gói tin truyền tải tới, nhưng đánh đổi để mạng không bị sấp hoàn toàn khi có vấn đề vẫn tốt hơn.
+
+## Router là gì?
+Router là thiết bị kết nối các mạng với nhau (Ví dụ như mạng LAN của nhà chúng ta với Internet của ISP) và truyền dữ liệu giữa chúng bằng việc định tuyến. Khác với Switch sử dụng địa chỉ MAC để kết nối và truyền tải dữ liệu trong một mạng LAN, Router sử dụng địa chỉ IP để xác định dữ liệu cần truyền đến với mạng nào. Định tuyến (routing) là thuật ngữ nói về việc truyền dữ liệu giữa các mạng, nó bao gồm việc tạo đường truyền rồi chọn đường truyền tối ưu nhất để kết nối các mạng rồi truyền dữ liệu. Định tuyến sẽ hữu ích khi ta sử dụng nhiều đường dẫn như hình dưới.
+
+<p align="center"><img width="1140" height="390" alt="image" src="https://github.com/user-attachments/assets/eed2befd-4923-4758-81c7-7bc37cad90cf" /> </p>
+
+
 
 
