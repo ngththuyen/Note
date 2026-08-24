@@ -45,6 +45,25 @@ Router là thiết bị kết nối các mạng với nhau (Ví dụ như mạng
 
 <p align="center"><img width="1140" height="390" alt="image" src="https://github.com/user-attachments/assets/eed2befd-4923-4758-81c7-7bc37cad90cf" /> </p>
 
+## Chia mạng con (Subnetting)
+Như chúng ta tìm hiểu trước đó thì một mạng máy tính có thể có đủ hình dạng và kích thước, từ to đến nhỏ, từ hình sao tới hình vòng. Subnetting là thuật ngữ chỉ việc chia một mạng thành các mạng nhỏ hơn, gọn hơn bên trong mạng đó. Hình dung nó như việc chia bánh kem, chỉ có một lượng bánh nhất định thôi nhưng ai cũng muốn thì phải chia nhỏ ra. Subnetting là việc ta quyết định ai sẽ nhận được miếng bánh nào.
 
+Giả sử ta có một doanh nghiệp, trong đó có các phòng ban như:
+- Kế toán
+- Tài chính
+- Nhân sự
+
+<p align="center"><img width="908" height="801" alt="image" src="https://github.com/user-attachments/assets/bde8453c-c195-4ffb-bec1-b428e64576ef" /></p>
+
+Và trong thực tế, ta cần phải biết dữ liệu này cần được gửi đến phòng ban nào để xử lí vì vậy hệ thống mạng cũng cần phải thực thi được như vậy. Những quản trị viên mạng sẽ chia các mạng con (subnetting) ra phục vụ cho những nhu cầu này, như phòng tài chính sẽ có một mạng riêng, phòng kế toán một mạng riêng,..
+
+Subnetting được thực hiện bằng cách phân chia số lượng thiết bị có thể sử dụng mạng, được biểu diễn bằng con số cụ thể gọi là subnet mask (mặt nạ mạng con). Như chúng ta đã tìm hiểu trước đó thì một địa chỉ IP sẽ chia ra 4 phần và mỗi phần được gọi là octet. Và subnet mask cũng hoạt động tương tụ.
+
+<p align="center"><img width="1140" height="488" alt="image" src="https://github.com/user-attachments/assets/a95fd9e8-6eef-4908-be9e-05cab367b5fd" /> </p>
+
+Các mạng con sẽ sử dụng địa chỉ IP với các mục đích như:
+- Xác định địa chỉ mạng
+- Xác định địa chỉ thiết bị
+- Xác định cổng mặc định (Default Gateway)
 
 
