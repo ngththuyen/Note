@@ -80,4 +80,10 @@ Ví dụ như trong một quán cafe, ta có thể chia ra 2 nhánh mạng con:
 
 Nếu như ta không chia mạng ra thì những thông tin nội bộ rất dễ bị người ngoài khai thác được.
 
+## ARP (Address Resolution Protocol)
+Là công nghệ cho phép các thiết bị tìm ra địa chỉ MAC của thiết bị khác khi đã biết IP trong cùng một mạng, vì trong LAN thì các thiết bị trong mạng muốn trao đổi các gói tin thông qua Switch sẽ cần xác định được địa chỉ MAC. Khi có 1 thiết bị muốn giao tiếp với thiết bị khác, nó sẽ gửi ARP Request (broadcast) đến toàn bộ các máy trong mạng cùng lúc để hỏi "địa chỉ IP này là của địa chỉ MAC nào?". Khi đó máy cần tìm nhận được tin sẽ trả về một ARP Reply (unicast) về cho đúng máy hỏi. Từ đó thiết bị hỏi có thể nhớ được thiết bị nó tìm có địa chỉ MAC là gì bằng cách lưu vào ARP Cache. ARP Cache sẽ giúp mỗi thiết bị trong mạng duy trì được thông tin của các thiết bị khác, từ đó mỗi lần cần tìm địa chỉ MAC sẽ không cần hỏi toàn bộ thiết bị trong mạng nữa.
+
+<p align="center"><img width="823" height="864" alt="image" src="https://github.com/user-attachments/assets/a2f17643-f27b-4f5e-9861-ff683a9eeacb" /></p>
+
+
 
