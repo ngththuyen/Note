@@ -46,7 +46,7 @@ Router là thiết bị kết nối các mạng với nhau (Ví dụ như mạng
 <p align="center"><img width="1140" height="390" alt="image" src="https://github.com/user-attachments/assets/eed2befd-4923-4758-81c7-7bc37cad90cf" /> </p>
 
 ## Chia mạng con (Subnetting)
-Như chúng ta tìm hiểu trước đó thì một mạng máy tính có thể có đủ hình dạng và kích thước, từ to đến nhỏ, từ hình sao tới hình vòng. Subnetting là thuật ngữ chỉ việc chia một mạng thành các mạng nhỏ hơn, gọn hơn bên trong mạng đó. Hình dung nó như việc chia bánh kem, chỉ có một lượng bánh nhất định thôi nhưng ai cũng muốn thì phải chia nhỏ ra. Subnetting là việc ta quyết định ai sẽ nhận được miếng bánh nào.
+Như chúng ta tìm hiểu trước đó thì một mạng máy tính có thể có đủ hình dạng và kích thước, từ to đến nhỏ, từ hình sao tới hình vòng. Subnetting là thuật ngữ chỉ việc chia một mạng thành các mạng nhỏ hơn, gọn hơn bên trong mạng đó. Hình dung nó như việc chia bánh kem, chỉ có một lượng bánh nhất định thôi nhưng ai cũng muốn thì phải chia nhỏ ra. Subnetting là việc ta quyết định ai sẽ nhận được miếng bánh nào, và chỉ dành riêng miếng bánh đó cho người đó.
 
 Giả sử ta có một doanh nghiệp, trong đó có các phòng ban như:
 - Kế toán
@@ -57,13 +57,27 @@ Giả sử ta có một doanh nghiệp, trong đó có các phòng ban như:
 
 Và trong thực tế, ta cần phải biết dữ liệu này cần được gửi đến phòng ban nào để xử lí vì vậy hệ thống mạng cũng cần phải thực thi được như vậy. Những quản trị viên mạng sẽ chia các mạng con (subnetting) ra phục vụ cho những nhu cầu này, như phòng tài chính sẽ có một mạng riêng, phòng kế toán một mạng riêng,..
 
-Subnetting được thực hiện bằng cách phân chia số lượng thiết bị có thể sử dụng mạng, được biểu diễn bằng con số cụ thể gọi là subnet mask (mặt nạ mạng con). Như chúng ta đã tìm hiểu trước đó thì một địa chỉ IP sẽ chia ra 4 phần và mỗi phần được gọi là octet. Và subnet mask cũng hoạt động tương tụ.
+Subnetting được thực hiện bằng cách phân chia số lượng thiết bị có thể sử dụng mạng, được biểu diễn bằng con số cụ thể gọi là subnet mask (mặt nạ mạng con). Như chúng ta đã tìm hiểu trước đó thì một địa chỉ IP sẽ chia ra 4 phần và mỗi phần được gọi là octet. Và subnet mask cũng có cấu trúc tương tự.
 
 <p align="center"><img width="1140" height="488" alt="image" src="https://github.com/user-attachments/assets/a95fd9e8-6eef-4908-be9e-05cab367b5fd" /> </p>
 
-Các mạng con sẽ sử dụng địa chỉ IP với các mục đích như:
-- Xác định địa chỉ mạng
-- Xác định địa chỉ thiết bị
+Các mạng con sẽ sử dụng địa chỉ IP với mục đích:
+- Xác định địa chỉ mạng (Network Address)
+- Xác định địa chỉ host (Host Adress)
 - Xác định cổng mặc định (Default Gateway)
+
+| Loại          | Giải thích                                                                                                                                                               | Ví dụ                                                                                                                                                                                                                      |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Địa chỉ Mạng  | Đây là địa chỉ đại diện cho cả mạng, không gán vào bất cứ thiết bị nào và được lấy bằng cách tách phần mạng trong IP và đặt phần host thành 0                            | Ví dụ một thiết bị kết nối mạng có IP là 192.168.1.100 thì địa chỉ mạng là 192.168.1.0                                                                                                                                     |
+| Địa chỉ Host  | Đây là địa chỉ IP, gán cho một thiết bị cụ thể trong mạng                                                                                                                | Ví dụ một thiết bị kết nối mạng có IP là 192.168.1.100                                                                                                                                                                       |
+| Cổng mặc định | Đây là địa chỉ được gọi là cửa ngõ để đi ra khỏi mạng con, nó thường là địa chỉ của Router. Bất kì thiết bị nào đi ra khỏi mạng con thì phải bước qua địa chỉ này trước. | Ví dụ thiết bị trong LAN muốn đi ra Internet thông qua Router thì cần phải truy cập 192.168.1.254. Một địa chỉ cổng mặc định có thể là bất kì địa chỉ host nào nhưng thường nó sẽ lấy địa chỉ đầu hoặc cuối (.1 hoặc .254) |
+
+Hiện nay thì quy mô mạng trong nhà ít khi triển khai subnetting vì tối đa 254 thiết bị kết nối mạng là quá nhiều rồi, còn quy mô doanh nghiệp thì mới cần vì trong đó triển khai rất nhiều thiết bị như máy in, PC, camera, TV,.. Khi ấy, subnetting sẽ cung cấp rất nhiều lợi ích như tính bảo mật, ổn định và toàn quyền quản lí. 
+
+Ví dụ như trong một quán cafe, ta có thể chia ra 2 nhánh mạng con:
+- Cái dành cho nhân viên, phục vụ cho các việc quản lí, tính toán, theo dõi,..
+- Cái dành cho khách hàng, để khách tới mua nước sẽ được sử dụng mạng miễn phí
+
+Nếu như ta không chia mạng ra thì những thông tin nội bộ rất dễ bị người ngoài khai thác được.
 
 
