@@ -85,5 +85,12 @@ Là công nghệ cho phép các thiết bị tìm ra địa chỉ MAC của thi�
 
 <p align="center"><img width="823" height="864" alt="image" src="https://github.com/user-attachments/assets/a2f17643-f27b-4f5e-9861-ff683a9eeacb" /></p>
 
+## DHCP
+Khi kết nối vào mạng thì địa chỉ IP có thể gán vào thiết bị bằng cách thủ công hoặc tự động. Hầu hết các quy trình gán IP tự động đều được thực hiện bởi máy chủ DHCP (Dynamic Host Configuration Protocol). Khi một thiết bị kết nối mạng, nếu nó chưa được gán IP thì nó sẽ hỏi tất cả thiết bị hỏi xem có DHCP server nào trong mạng không (DHCP Discover). DHCP server nếu có sẽ trả lời lại với một địa chỉ IP mà thiết bị có thể dùng và hỏi có muốn dùng nó ko (DHCP Offer). Sau đó thiết bị sẽ request lại DHCP server là muốn dùng IP đó (DHCP Request). Cuối cùng, DHCP server trả lời lại xác nhận thiết bị đã có thể sử dụng IP đó (DHCP ACK).
+
+Sở dĩ trong quy trình trên không dừng lại ở Offer luôn mà phải có bước Request là vì một mạng có thể có nhiều DHCP server, nếu thiết bị luốn lấy IP của server A thì request lại offer server A chứ không thể để các server gán lung tung được.
+
+<p align="center"><img width="636" height="870" alt="image" src="https://github.com/user-attachments/assets/8cc158a0-7fec-4e6c-b095-9ee24addf5d7" /></p>
+
 
 
