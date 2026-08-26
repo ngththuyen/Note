@@ -87,9 +87,15 @@ Kể từ dòng thứ 2 trở đi thì là các Header, ta sẽ phân tích sau 
 ## HTTP Methods (Phương thức HTTP)
 Đây là các phương thức CHỈ ĐƯỢC SỬ DỤNG trong HTTP Request, hiện nay có tất cả là 9 phương thức phổ biến trong đó 2 cái `GET` và `POST` được sử dụng nhiều nhất.
 - **GET:** được sử dụng để lấy tài nguyên theo URI đã cung cấp, nó có thể gửi các tham số đến nguồn tài nguyên được truy vấn thông qua URL vì thế nên thường không được sử dụng vào các thao tác thu thập thông tin nhạy cảm như Login. Một ví dụ cho thấy nó có thể lộ dữ liệu trên URL là: `example.com/login.php?user=ngththuyen&password=123`
-- **POST:**  được sử dụng để thực hiện các hành động như là gửi thông tin hay tạo tài nguyên mới lên máy chủ, điểm khác biệt so với GET là POST sẽ cho phép đặt các tham số của Request trên cả URL và Body. Việc này giúp cho POST xử lí dữ liệu nhảy cảm tốt hơn khi các thông tin như password có thể đặt tại phần Body của Request còn các thông tin ngoài lề có thể đặt ở URL.
+- **POST:** được sử dụng để thực hiện các hành động như là gửi thông tin hay tạo tài nguyên mới lên máy chủ, điểm khác biệt so với GET là POST sẽ cho phép đặt các tham số của Request trên cả URL và Body. Việc này giúp cho POST xử lí dữ liệu nhạy cảm tốt hơn khi các thông tin như password có thể đặt tại phần Body của Request còn các thông tin ngoài lề có thể đặt ở URL.
 - **HEAD:** hoạt động y hệt GET nhưng Response trả về sẽ không có Body, chỉ có Header. Và vì nó không lấy cả Body nên phương thức này thường được ứng dụng để kiểm tra trang tài nguyên đích có tồn tại hay không trước khi dùng GET vào để lấy thông tin thay vì dùng GET ngay từ đầu sẽ tốn thời gian tải tài nguyên.
-- **PUT:** 
+- **TRACE:** được sử dụng để kiểm tra, check bệnh bằng việc gửi Request từ Client và yêu cầu Server trả lại nguyên văn Request đó. Nếu trong quá trình gửi, Request bị thay đổi ở phần nào đó khiến Server trả về nội dung khác với Request ban đầu thì có thể phán là có bệnh.
+- **OPTIONS:** được dùng để hỏi Server xem cho phép những phương thức HTTP Request nào. Server thường trả về Header Allow những Method được phép như `Allow: GET, POST, OPTIONS`
+- **PUT:** được dùng để ghi đè, tạo mới tài nguyên tại đường dẫn cụ thể trong Server
+- **PATCH:** được dùng để cập nhật một phần tài nguyên đã có sẵn trên Server
+- **DELETE:** được dùng xoá tài nguyên trên Server
+- **CONNECT:** được dùng để thiết lập một kênh kết nối giữa Client và Server thông qua một thằng trung gian
+
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
