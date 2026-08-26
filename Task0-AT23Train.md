@@ -11,7 +11,7 @@ Ví dụ, khi ta truy cập Facebook thì có thể hình dung mô hình hoạt 
 HTTP là giao thức không trạng thái (stateless protocol), tức là những request hay response được gửi độc lập với nhau. Mấy thằng gửi sau không biết bất cứ thông tin gì về mấy thằng gửi trước.
 
 ## HTTP Requests
-Là thông tin được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Response) đều chứa một hoặc nhiều Header, mỗi Header nằm trên một dòng riêng biệt, sau phần Header sẽ là một dòng trống rồi mới đến phần Body (phần này thì có thể có hoặc không tuỳ method). 
+Là yêu cầu được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Response) đều chứa một hoặc nhiều Header, mỗi Header nằm trên một dòng riêng biệt, sau phần Header sẽ là một dòng trống rồi mới đến phần Body (phần này thì có thể có hoặc không tuỳ method). 
 
 Ví dụ:
 ```yaml
@@ -86,8 +86,10 @@ Kể từ dòng thứ 2 trở đi thì là các Header, ta sẽ phân tích sau 
 
 ## HTTP Methods (Phương thức HTTP)
 Đây là các phương thức CHỈ ĐƯỢC SỬ DỤNG trong HTTP Request, hiện nay có tất cả là 9 phương thức phổ biến trong đó 2 cái `GET` và `POST` được sử dụng nhiều nhất.
-- GET: được sử dụng để lấy tài nguyên theo URI đã cung cấp
-- POST
+- **GET:** được sử dụng để lấy tài nguyên theo URI đã cung cấp, nó có thể gửi các tham số đến nguồn tài nguyên được truy vấn thông qua URL vì thế nên thường không được sử dụng vào các thao tác thu thập thông tin nhạy cảm như Login. Một ví dụ cho thấy nó có thể lộ dữ liệu trên URL là: `example.com/login.php?user=ngththuyen&password=123`
+- **POST:**  được sử dụng để thực hiện các hành động như là gửi thông tin hay tạo tài nguyên mới lên máy chủ, điểm khác biệt so với GET là POST sẽ cho phép đặt các tham số của Request trên cả URL và Body. Việc này giúp cho POST xử lí dữ liệu nhảy cảm tốt hơn khi các thông tin như password có thể đặt tại phần Body của Request còn các thông tin ngoài lề có thể đặt ở URL.
+- **HEAD:** hoạt động y hệt GET nhưng Response trả về sẽ không có Body, chỉ có Header. Và vì nó không lấy cả Body nên phương thức này thường được ứng dụng để kiểm tra trang tài nguyên đích có tồn tại hay không trước khi dùng GET vào để lấy thông tin thay vì dùng GET ngay từ đầu sẽ tốn thời gian tải tài nguyên.
+- **PUT:** 
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
