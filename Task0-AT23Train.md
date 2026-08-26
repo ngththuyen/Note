@@ -1,17 +1,17 @@
 <p align="center"><img width="684" height="563" alt="image" src="https://github.com/user-attachments/assets/87ce6d54-9707-4590-b272-80998dad2a82" /></p>
 
 ## The HTTP Protocol (Giao thức truyền tải siêu văn bản)
-**HTTP** (Hypertext transfer protocol) là một giao thức giao tiếp cốt lõi để truy cập World Wide Web và nó từng được áp dụng trong tất cả các Website ngày xưa (còn nay chuyển sang HTTPS hết rồi). Nó hoạt động dựa trên mô hình **Client - Server**, tức là máy tính của người dùng (client) sẽ gửi yêu cầu (request) tới máy chủ (server), sau khi nhận được thông tin thì server mới trả về phản hồi (respond) cho người dùng. 
+**HTTP** (Hypertext transfer protocol) là một giao thức giao tiếp cốt lõi để truy cập World Wide Web và nó từng được áp dụng trong tất cả các Website ngày xưa (còn nay chuyển sang HTTPS hết rồi). Nó hoạt động dựa trên mô hình **Client - Server**, tức là máy tính của người dùng (client) sẽ gửi yêu cầu (request) tới máy chủ (server), sau khi nhận được thông tin thì server mới trả về phản hồi (response) cho người dùng. Ngắn gọn thì Client đưa ra Request còn Server trả về Response
 
 Ví dụ, khi ta truy cập Facebook thì có thể hình dung mô hình hoạt động như sau:
 1. Ta điền trên trình duyệt là `facebook.com`, khi này thì Client (Máy của ta) gửi yêu cầu đến Server (Máy chủ Facebook) để xin dữ liệu, tài nguyên,.. cần thiết
 2. Sau khi Server tiếp nhận được yêu cầu, nó sẽ gửi về phản hồi những thông tin mà Client cần như là HTML/CSS, Hình ảnh,..
 3. Khi Client nhận được các dữ liệu đó xong, nó có thể dùng để xử lí các việc cần thiết như HTML/CSS để hiển thị giao diện của Facebook
 
-HTTP là giao thức không trạng thai (stateless protocol), tức là những request hay respond được gửi đều độc lập với nhau. Mấy thằng gửi sau không biết bất cứ thông tin gì về mấy thằng gửi trước.
+HTTP là giao thức không trạng thai (stateless protocol), tức là những request hay response được gửi đều độc lập với nhau. Mấy thằng gửi sau không biết bất cứ thông tin gì về mấy thằng gửi trước.
 
 ## HTTP Requests
-Là thông tin được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin, dữ liệu,.. mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Respond) đều chứa một hoặc nhiều Header, mỗi Header nằm trên một dòng riêng biệt, sau phần Header sẽ là một dòng trống rồi mới đến phần Body (phần này thì có thể có hoặc không tuỳ method). 
+Là thông tin được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin, dữ liệu,.. mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Response) đều chứa một hoặc nhiều Header, mỗi Header nằm trên một dòng riêng biệt, sau phần Header sẽ là một dòng trống rồi mới đến phần Body (phần này thì có thể có hoặc không tuỳ method). 
 
 Ví dụ:
 ```yaml
@@ -54,6 +54,38 @@ Kể từ dòng 2 của ví dụ trở đi, đó là các Header được gửi 
 - **Referer:** cho biết trang nào mà người dùng đang ở và gửi cái Request này. Như ví dụ thì Client đang ở `https://mdsec.net/auth/488/Home.ashx` rồi nhấn nút hay link gì đó để gửi Request này.
 - **User-Agent:** cho biết thông tin về trình duyệt, hệ điều hành, phần mềm,.. của thằng gửi Request này. Như ví dụ trên thì cái dễ hiểu là người gửi đang dùng Windows, còn mấy thông tin khác thì thua.
 - **Host:** cho biết tên miền (domain) mà Request đang hướng tới, phần này cần thiết vì nếu nhiều domain trỏ chung một Server đích thì cái phần Host này sẽ xác định được là nhảy vào domain nào.
+
+## HTTP Responses
+Là thông tin Server trả về Client sau khi nhận được Request từ Client. Cấu trúc của HTTP Response tương tự như Request chỉ khác là thay Request Line thành Status Line. Ví dụ một Response như dưới:
+
+```yaml
+HTTP/1.1 200 OK
+Date: Tue, 19 Apr 2011 09:23:32 GMT
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Set-Cookie: tracking=tI8rk7joMx44S2Uu85nSWc
+X-AspNet-Version: 2.0.50727
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 1067
+
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “http://
+www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”><html xmlns=”http://
+www.w3.org/1999/xhtml” ><head><title>Your details</title>
+...
+```
+Lần này ví dụ đã có thêm phần Body với dấu hiệu thấy rõ là sau một dấu cách lạc quẻ trong một chuỗi liên tiếp. 
+Dòng đầu tiên của Response này là Status Line như có đề cập ở trên, nó cũng chia thành 3 phần bao gồm:
+- **HTTP Version (Phiên bản HTTP)**
+- **Status Code (Mã kết quả):** là một con số thể hiện trạng thái kết quả của lần Request trước đó, như ví dụ thì là `200` nghĩa là Request thành công và tài nguyên đã yêu cầu sẽ được gửi về
+- **Reason Phrase:** giải thích thêm về trạng thái của Response bằng ngôn ngữ thay vì số nhu thằng Status Code, ở ví dụ thì là `OK`
+
+Kể từ dòng thứ 2 trở đi thì là các Header, cách trình bày như ở phần Request. Và ở 4 dòng cuối của ví dụ ta có thể thấy đây là một Body được kèm theo trong Response, nó là một đoạn mã HTML thì ta có thể hình dung như ví dụ truy cập Facebook ở đầu. Sau khi truy cập vào site thì Request để xin HTML/CSS để xử lí giao diện, sau khi Request được chấp nhận thì có Response trả về đoạn mã để Client xử lí đồ hoạ.
+
+## HTTP Methods (Phương thức HTTP)
+
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
