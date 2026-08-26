@@ -118,6 +118,8 @@ HTTP ngày nay hỗ trợ số lượng lớn Header, có cái dành cho cả Re
 - **WWW-Authenticate:** báo cho Client biết phương thức xác thực nào cần dùng để truy cập vào tài nguyên được bảo vệ
 
 ## Cookies
+Cookie HTTP là phần dữ liệu mà Server gửi tới Client, sau đó Browser của Client sẽ lưu trữ Cookie đó và gửi lại cho Server đó ở các Request sau này. Tại sao phải cần Cookie? Như ta đã biết thì HTTP là một stateless protocol tức các truy vấn đều độc lập, chả liên quan gì đến nhau và điều đó khiến cho Server không xác định được các truy vấn có phải đến từ cùng 1 Client hay không. Và do đó, Cookie ra đời để xử lí vấn đề này
+
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
@@ -125,3 +127,4 @@ HTTP ngày nay hỗ trợ số lượng lớn Header, có cái dành cho cả Re
 - [HTTP Request là gì? Các phương thức HTTP request](https://viblo.asia/p/http-request-la-gi-cac-phuong-thuc-http-request-6J3Zgy6A5mB)
 - [Cùng tìm hiểu về HTTP request methods](https://viblo.asia/p/cung-tim-hieu-ve-http-request-methods-djeZ1xBoKWz)
 - [HTTP Header là gì? Ví dụ về các trường phổ biến trong Request Header](https://vietnix.vn/http-header-la-gi)
+- [Tìm hiểu về Cookies](https://viblo.asia/p/tim-hieu-ve-cookies-bXP4W5YKL7G)
