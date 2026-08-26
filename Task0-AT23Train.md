@@ -96,9 +96,32 @@ Kể từ dòng thứ 2 trở đi thì là các Header, ta sẽ phân tích sau 
 - **DELETE:** được dùng xoá tài nguyên trên Server
 - **CONNECT:** được dùng để thiết lập một kênh kết nối giữa Client và Server thông qua một thằng trung gian
 
+## HTTP Headers 
+HTTP ngày nay hỗ trợ số lượng lớn Header, có cái dành cho cả Request và Response, có cái chỉ dành cho 1 trong 2. Dưới đây là những Header thông dụng được tách ra 3 nhóm gồm General, Request và Response:
+
+### General Headers
+- **Connection:** kết nối mạng giữa Client và Server có được mở tiếp không hay là đóng lại. Trường thông tin này có thể nhận 1 trong 2 giá trị là `keep-alive` và `close` tương ứng tiếp tục và đóng kết nối.
+- **Content-Encoding:** loại mã hoá nào được sử dụng cho Body để tăng tốc độ truyền tải, loại phổ biến ta thường thấy là `gzip`
+- **Content-Length:** chỉ độ dài của phần Body bằng đơn vị Byte (Header này trong Medhod HEAD sẽ chỉ độ dài của Body khi sử dụng GET trong lần tới chứ HEAD response không có Body)
+- **Content-Type:** chỉ loại nội dung được trình bày trong phần Body, ví dụ như `text/html` là nói về Body đang chứa mã HTML
+- **Transfer-Encoding:** chỉ loại mã hoá nào được sử dụng cho toàn bộ truy vấn đó, khác với Content-Encoding chỉ encode Body thôi thì cái này encode hết
+### Request Headers
+- **Accept:** chỉ định dạng dữ liệu mà Client muốn nhận từ Server ví dụ như `application/json` là muốn nhận Response có định dạng json
+- **User-Agent:** chỉ thông tin về thiết bị, trình duyệt hay ứng dụng mà Client đang dùng, việc này giúp Server có thể trả về những thông tin tương thích với Client
+- **Authorization:** chỉ thông tin xác thực để gửi tới Server khi Request vào tài nguyên cần quyền truy cập
+- **Cookie:** chỉ thông tin Cookie mà Client lưu trước đó được gửi cho Server, giúp xác định session và cá nhân hoá trải nghiệm
+### Response Headers
+- **Server:** thông tin về phần mềm mà Web Server đang vận hành, ví dụ `Server: Apache/2.4.10 (Unix)`
+- **Cache-Control:** điều khiển việc lưu bộ nhớ đệm (cache) ở phía trình duyệt hoặc các cache trung gian
+- **Set-Cookie:** chỉ định Cookie mà Client sẽ Request trong các lần tiếp theo
+- **Expires:** nói cho trình duyệt biết nội dung trong phần Body sẽ có thời hạn là bao lâu
+- **WWW-Authenticate:** báo cho Client biết phương thức xác thực nào cần dùng để truy cập vào tài nguyên được bảo vệ
+
+## Cookies
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
 - [Tìm hiểu về HTTP (HyperText Transfer Protocol)](https://viblo.asia/p/tim-hieu-ve-http-hypertext-transfer-protocol-bJzKmgewl9N)
 - [HTTP Request là gì? Các phương thức HTTP request](https://viblo.asia/p/http-request-la-gi-cac-phuong-thuc-http-request-6J3Zgy6A5mB)
 - [Cùng tìm hiểu về HTTP request methods](https://viblo.asia/p/cung-tim-hieu-ve-http-request-methods-djeZ1xBoKWz)
+- [HTTP Header là gì? Ví dụ về các trường phổ biến trong Request Header](https://vietnix.vn/http-header-la-gi)
