@@ -1,17 +1,17 @@
 <p align="center"><img width="684" height="563" alt="image" src="https://github.com/user-attachments/assets/87ce6d54-9707-4590-b272-80998dad2a82" /></p>
 
 ## The HTTP Protocol (Giao thức truyền tải siêu văn bản)
-**HTTP** (Hypertext transfer protocol) là một giao thức giao tiếp cốt lõi để truy cập World Wide Web và nó từng được áp dụng trong tất cả các Website ngày xưa (còn nay chuyển sang HTTPS hết rồi). Nó hoạt động dựa trên mô hình **Client - Server**, tức là máy tính của người dùng (client) sẽ gửi yêu cầu (request) tới máy chủ (server), sau khi nhận được thông tin thì server mới trả về phản hồi (response) cho người dùng. Ngắn gọn thì Client đưa ra Request còn Server trả về Response
+**HTTP** (Hypertext transfer protocol) là giao thức giao tiếp hoạt động dựa trên mô hình **Client - Server**, tức là máy của người dùng (client) sẽ gửi yêu cầu (request) tới máy chủ (server), sau khi nhận được thông tin thì server mới trả về phản hồi (response) cho người dùng
 
 Ví dụ, khi ta truy cập Facebook thì có thể hình dung mô hình hoạt động như sau:
 1. Ta điền trên trình duyệt là `facebook.com`, khi này thì Client (Máy của ta) gửi yêu cầu đến Server (Máy chủ Facebook) để xin dữ liệu, tài nguyên,.. cần thiết
 2. Sau khi Server tiếp nhận được yêu cầu, nó sẽ gửi về phản hồi những thông tin mà Client cần như là HTML/CSS, Hình ảnh,..
 3. Khi Client nhận được các dữ liệu đó xong, nó có thể dùng để xử lí các việc cần thiết như HTML/CSS để hiển thị giao diện của Facebook
 
-HTTP là giao thức không trạng thai (stateless protocol), tức là những request hay response được gửi đều độc lập với nhau. Mấy thằng gửi sau không biết bất cứ thông tin gì về mấy thằng gửi trước.
+HTTP là giao thức không trạng thái (stateless protocol), tức là những request hay response được gửi độc lập với nhau. Mấy thằng gửi sau không biết bất cứ thông tin gì về mấy thằng gửi trước.
 
 ## HTTP Requests
-Là thông tin được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin, dữ liệu,.. mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Response) đều chứa một hoặc nhiều Header, mỗi Header nằm trên một dòng riêng biệt, sau phần Header sẽ là một dòng trống rồi mới đến phần Body (phần này thì có thể có hoặc không tuỳ method). 
+Là thông tin được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Response) đều chứa một hoặc nhiều Header, mỗi Header nằm trên một dòng riêng biệt, sau phần Header sẽ là một dòng trống rồi mới đến phần Body (phần này thì có thể có hoặc không tuỳ method). 
 
 Ví dụ:
 ```yaml
@@ -82,13 +82,15 @@ Dòng đầu tiên của Response này là Status Line như có đề cập ở 
 - **Status Code (Mã kết quả):** là một con số thể hiện trạng thái kết quả của lần Request trước đó, như ví dụ thì là `200` nghĩa là Request thành công và tài nguyên đã yêu cầu sẽ được gửi về
 - **Reason Phrase:** giải thích thêm về trạng thái của Response bằng ngôn ngữ thay vì số nhu thằng Status Code, ở ví dụ thì là `OK`
 
-Kể từ dòng thứ 2 trở đi thì là các Header, cách trình bày như ở phần Request. Và ở 4 dòng cuối của ví dụ ta có thể thấy đây là một Body được kèm theo trong Response, nó là một đoạn mã HTML thì ta có thể hình dung như ví dụ truy cập Facebook ở đầu. Sau khi truy cập vào site thì Request để xin HTML/CSS để xử lí giao diện, sau khi Request được chấp nhận thì có Response trả về đoạn mã để Client xử lí đồ hoạ.
+Kể từ dòng thứ 2 trở đi thì là các Header, ta sẽ phân tích sau ở các phần sau. Và ở 4 dòng cuối của ví dụ ta có thể thấy đây là một Body được kèm theo trong Response, nó là một đoạn HTML, ta có thể hình dung như ví dụ truy cập Facebook ở đầu. Sau khi truy cập vào site thì Request để xin HTML/CSS để xử lí giao diện, sau khi Request được chấp nhận thì có Response trả về đoạn mã như trên để Client xử lí đồ hoạ.
 
 ## HTTP Methods (Phương thức HTTP)
-
+Đây là các phương thức CHỈ ĐƯỢC SỬ DỤNG trong HTTP Request, hiện nay có tất cả là 9 phương thức phổ biến trong đó 2 cái `GET` và `POST` được sử dụng nhiều nhất.
+- GET: được sử dụng để lấy tài nguyên theo URI đã cung cấp
+- POST
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
 - [Tìm hiểu về HTTP (HyperText Transfer Protocol)](https://viblo.asia/p/tim-hieu-ve-http-hypertext-transfer-protocol-bJzKmgewl9N)
 - [HTTP Request là gì? Các phương thức HTTP request](https://viblo.asia/p/http-request-la-gi-cac-phuong-thuc-http-request-6J3Zgy6A5mB)
-
+- [Cùng tìm hiểu về HTTP request methods](https://viblo.asia/p/cung-tim-hieu-ve-http-request-methods-djeZ1xBoKWz)
