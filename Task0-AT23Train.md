@@ -11,7 +11,7 @@ Ví dụ, khi ta truy cập Facebook thì có thể hình dung mô hình hoạt 
 HTTP là giao thức không trạng thai (stateless protocol), tức là những request hay respond được gửi đều độc lập với nhau. Mấy thằng gửi sau không biết bất cứ thông tin gì về mấy thằng gửi trước.
 
 ## HTTP Requests
-Là thông tin được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin, dữ liệu,.. mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Respond) đều chứa một hoặc nhiều header, mỗi header nằm trên một dòng riêng biệt, sau phần header sẽ là một dòng trống rồi mới đến phần body (có thể có hoặc không). 
+Là thông tin được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin, dữ liệu,.. mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Respond) đều chứa một hoặc nhiều header, mỗi header nằm trên một dòng riêng biệt, sau phần header sẽ là một dòng trống rồi mới đến phần Body (phần này thì có thể có hoặc không tuỳ method). 
 
 Ví dụ:
 ```
@@ -28,6 +28,15 @@ Host: mdsec.net
 Connection: Keep-Alive
 Cookie: SessionId=5B70C71F3FD4968935CDB6682E545476
 ```
+
+Dòng đầu tiên của mỗi HTTP Request được gọi là Request Line, luôn chứa 3 phần tách biệt bởi dấu cách bao gồm:
+- **HTTP Method (Phương thức HTTP):** như ví dụ trên thì Method đang dùng là GET, chức năng của GET là thu thập tài nguyên từ phía Server và vì GET không có phần Body nên là sau phần Cookie (Header cuối) không có dấu cách rồi tới nội dung tiếp theo.
+- **Request-URI (Đường dẫn tài nguyên):** xác định đường dẫn ở trong site mà Client muốn truy vấn tới, như ví dụ trên là request tới `/auth/488/YourDetails.ashx?uid=129 `
+- **HTTP Version (Phiên bản HTTP):** thông tin về phiên bản mà Request đang dùng, như ví dụ là `HTTP/1.1`
+
+> Phần 2 trong Request Line ở The Web Application Hacker's Handbook có bảo nó là The requested URL nhưng theo nhiều nguồn trên mạng hiện nay thì thuật ngữ đúng phải là Request-URI hay gọi đơn giản là đường dẫn. Vì URL thực chất phải bao gồm tên miền, giao thức, đường dẫn.. chứ không chỉ có mỗi cái `/auth/488/YourDetails.ashx?uid=129` là biết được URL.
+
+
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
