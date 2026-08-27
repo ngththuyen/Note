@@ -31,8 +31,6 @@ Dòng đầu tiên của mỗi HTTP Request được gọi là Request Line, lu�
 - **Request-URI (Đường dẫn tài nguyên):** xác định đường dẫn ở trong site mà Client muốn truy vấn tới, như ví dụ trên là request tới `/auth/488/YourDetails.ashx?uid=129 `
 - **HTTP Version (Phiên bản HTTP):** thông tin về phiên bản mà Request đang dùng, như ví dụ là `HTTP/1.1`
 
-> Phần 2 trong Request Line ở The Web Application Hacker's Handbook có bảo nó là The requested URL nhưng theo nhiều nguồn trên mạng hiện nay thì thuật ngữ đúng phải là Request-URI hay gọi đơn giản là đường dẫn. Vì URL thực chất phải bao gồm tên miền, giao thức, đường dẫn.. chứ không chỉ có mỗi cái `/auth/488/YourDetails.ashx?uid=129` là biết được URL.
-
 ```http
 Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/x-shockwaveflash, */*
 Referer: https://mdsec.net/auth/488/Home.ashx
@@ -160,9 +158,13 @@ Có rất nhiều mã cụ thể tương ứng từng công dụng khác nhau, �
 - `503 Service Unavailable` Server đang không có sẵn, có thể bị quá tải hoặc dừng để bảo trì
 
 ## HTTPS (Hypertext Transfer Protocol Secure)
-Là HTTP nhưng có thêm "Secure", tức là bảo mật hơn. Nó mã hoá thông tin bằng chứng chỉ SSL/TSL rồi mới cho phép trao đổi giữa Client - Server. Đây là giao thức được sử dụng rộng rãi hiện nay nhờ độ bảo mật vượt trội giúp các thao tác giữa người dùng và máy chủ an toàn hơn.
+Là HTTP nhưng có thêm "Secure", tức là bảo mật hơn. Nó mã hoá thông tin bằng chứng chỉ SSL/TSL rồi mới cho phép trao đổi giữa Client và Server. Đây là giao thức được sử dụng rộng rãi hiện nay nhờ độ bảo mật vượt trội giúp các thao tác giữa người dùng và máy chủ an toàn hơn.
 
 ## HTTP Proxies
+Là Server trung gian đứng giữa Client Browser và Web Server, khi một Browser có setup Proxy thì mọi Request được Client gửi đều gửi tới Proxy rồi Proxy gửi qua Server và Server trả Response về cũng trả cho Proxy rồi Proxy gửi lại Client. Việc này giúp Client có thể giấu IP gốc, lọc nội dung hay là bảo mật khi cần quản lí một số tài nguyên nhạy cảm.
+
+## HTTP Authentication
+Là một cơ chế bảo mật kiểm tra xem người dùng có đủ điều kiện truy cập hay không
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
@@ -177,3 +179,4 @@ Là HTTP nhưng có thêm "Secure", tức là bảo mật hơn. Nó mã hoá th�
 - [HTTP Status code là gì? Các loại http status code](https://viblo.asia/p/http-status-code-la-gi-cac-loai-http-status-code-gDVK2dOXlLj)
 - [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
 - [HTTPS là gì? HTTP và HTTPS khác nhau ở điểm nào?](https://viettelidc.com.vn/tin-tuc/https-la-gi)
+- [HTTP Authentication là gì? Cách thức hoạt động](https://bkhost.vn/blog/http-authentication)
