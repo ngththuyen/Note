@@ -73,7 +73,7 @@ www.w3.org/1999/xhtml” ><head><title>Your details</title>
 Lần này ví dụ đã có thêm phần Body với dấu hiệu thấy rõ là sau một dấu cách lạc quẻ trong một chuỗi liên tiếp. 
 Dòng đầu tiên của Response này là Status Line như có đề cập ở trên, nó cũng chia thành 3 phần bao gồm:
 - **HTTP Version (Phiên bản HTTP)**
-- **Status Code (Mã kết quả):** là một con số thể hiện trạng thái kết quả của lần Request trước đó, như ví dụ thì là `200` nghĩa là Request thành công và tài nguyên đã yêu cầu sẽ được gửi về
+- **Status Code (Mã trạng thái):** là một con số thể hiện trạng thái kết quả của lần Request trước đó, như ví dụ thì là `200` nghĩa là Request thành công và tài nguyên đã yêu cầu sẽ được gửi về
 - **Reason Phrase:** giải thích thêm về trạng thái của Response bằng ngôn ngữ thay vì số nhu thằng Status Code, ở ví dụ thì là `OK`
 
 Kể từ dòng thứ 2 trở đi thì là các Header, ta sẽ phân tích sau ở các phần sau. Và ở 4 dòng cuối của ví dụ ta có thể thấy đây là một Body được kèm theo trong Response, nó là một đoạn HTML, ta có thể hình dung như ví dụ truy cập Facebook ở đầu. Sau khi truy cập vào site thì Request để xin HTML/CSS để xử lí giao diện, sau khi Request được chấp nhận thì có Response trả về đoạn mã như trên để Client xử lí đồ hoạ.
@@ -135,6 +135,31 @@ Cookie: yummy_cookie=chocolate; tasty_cookie=strawberry
 
 Mỗi Cookie được set thì thường có thời hạn sử dụng, như ở ví dụ trên thì không sử dụng thẻ `Expires` hay `Max-Age` thì Cookie sẽ chỉ tồn tại trong Session (dữ liệu tạm thời của người dùng được lưu ở phía máy chủ) đó, tức là sau khi Client đóng Tab Website thì Cookie bị hết hạn. 
 
+## Status Code
+Mỗi HTTP Response luôn chứa một Status Code (Mã trạng thái) ở dòng đầu để xác định trạng thái kết quả của Request mà Client gửi trước đó. Mã này có tác dụng xác định được Request trước đó gửi có thành công hay không, nếu thất bại thì lỗi do gì. Status Code được chia thành 5 nhóm dựa vào con số đầu của mỗi mã:
+- **`1xx`** - Mã chứa thông tin, đơn giản là chỉ báo Client là Server đã nhận được Request
+- **`2xx`** - Mã báo Request trước đó được gửi tới Server đã thành công
+- **`3xx`** - Mã báo Client đã được chuyển tiếp sang một nguồn tài nguyên khác
+- **`4xx`** - Mã báo có lỗi ở phía Client khi gửi Request
+- **`5xx`** - Mã báo có lỗi ở phía Server khi xử lí Request được gửi
+
+Có rất nhiều mã cụ thể tương ứng từng công dụng khác nhau, đây là một số mã ví dụ nổi tiếng mà chúng ta hay gặp:
+- `100 Continue` cho biết một phần Request trước đó gửi tới Server đã được tiếp nhận và nó yêu cầu gửi tới tiếp những nội dung tiếp theo (Ví dụ Request có chứa Header và Body nhưng mới gửi tới Header thôi thì nó báo trước để biết là Header đã tới còn Body chưa có)
+- `200 OK` cho biết Request đã được tiếp nhận và xử lí thành công
+- `201 Created` cho biết Request đã được nhận và thực hiện thành công phương thức PUT
+- `301 Moved Permanently` cho biết tài nguyên của Request hiện tại và các Request sau đã được chuyển sang URI mới
+- `302 Found` cho biết URI của tài nguyên được Request đã tạm thời bị thay đổi, có thể có một số thay đổi cho URI trong tương lai nên yêu cầu Client dùng URI cũ trong các lần Request tiếp theo
+- `400 Bad Request` cho biết Server không thể xử lí Request của Client vì nó chứa những nội dung không hợp lệ như là lỗi cú pháp, định dạng,..
+- `401 Unauthorized` cho biết Client cần phải xác thực để được Server xử lí Request
+- `403 Forbidden` cho biết không ai được truy cập vào tài nguyên này, bất kể đã xác thực
+- `404 Not Found` cho biết tài nguyên Request tới không tồn tại
+- `405 Method Not Allowed` cho biết Method (phương thức) được sử dụng trong Request ko được hỗ trợ
+- `413 Request Entity Too Large/Content Too Large` dữ liệu trong Request quá giới hạn cho phép của Server
+- `414 Request URI Too Long` URI quá dài để Server xử lí
+- `500 Internal Server Error` thông báo chung chung, báo Server bị lỗi gì đó
+- `503 Service Unavailable` Server đang không có sẵn, có thể bị quá tải hoặc dừng để bảo trì
+
+
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
@@ -146,3 +171,5 @@ Mỗi Cookie được set thì thường có thời hạn sử dụng, như ở 
 - [Session và Cookie](https://viblo.asia/p/tim-hieu-ve-cookies-bXP4W5YKL7G)
 - [Cookies là gì? Công dụng của Cookies trên trình duyệt? Cách xóa và bật quản lý Cookies trên Chrome](https://www.dienmayxanh.com/kinh-nghiem-hay/cookies-la-gi-cach-xoa-va-bat-quan-ly-cookies-tren-1133890)
 - [Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)
+- [HTTP Status code là gì? Các loại http status code](https://viblo.asia/p/http-status-code-la-gi-cac-loai-http-status-code-gDVK2dOXlLj)
+- [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
