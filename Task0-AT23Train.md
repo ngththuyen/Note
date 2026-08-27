@@ -1,7 +1,7 @@
 <p align="center"><img width="684" height="563" alt="image" src="https://github.com/user-attachments/assets/87ce6d54-9707-4590-b272-80998dad2a82" /></p>
 
 ## The HTTP Protocol (Giao thức truyền tải siêu văn bản)
-**HTTP** (Hypertext transfer protocol) là giao thức giao tiếp hoạt động dựa trên mô hình **Client - Server**, tức là máy của người dùng (client) sẽ gửi yêu cầu (request) tới máy chủ (server), sau khi nhận được thông tin thì server mới trả về phản hồi (response) cho người dùng
+**HTTP** (Hypertext transfer protocol) là giao thức tiêu chuẩn cho World Wide Web. Giống như một ngôn ngữ chung, HTTP cho phép các máy tính giao tiếp được với nhau và trao đổi thông tin. Nó hoạt động dựa trên mô hình **Client - Server**, tức là máy của người dùng (client) sẽ gửi yêu cầu (request) tới máy chủ (server), sau khi nhận được thông tin thì server mới trả về phản hồi (response) cho người dùng
 
 Ví dụ, khi ta truy cập Facebook thì có thể hình dung mô hình hoạt động như sau:
 1. Ta điền trên trình duyệt là `facebook.com`, khi này thì Client (Máy của ta) gửi yêu cầu đến Server (Máy chủ Facebook) để xin dữ liệu, tài nguyên,.. cần thiết
@@ -159,7 +159,10 @@ Có rất nhiều mã cụ thể tương ứng từng công dụng khác nhau, �
 - `500 Internal Server Error` thông báo chung chung, báo Server bị lỗi gì đó
 - `503 Service Unavailable` Server đang không có sẵn, có thể bị quá tải hoặc dừng để bảo trì
 
+## HTTPS (Hypertext Transfer Protocol Secure)
+Là HTTP nhưng có thêm "Secure", tức là bảo mật hơn. Nó mã hoá thông tin bằng chứng chỉ SSL/TSL rồi mới cho phép trao đổi giữa Client - Server. Đây là giao thức được sử dụng rộng rãi hiện nay nhờ độ bảo mật vượt trội giúp các thao tác giữa người dùng và máy chủ an toàn hơn.
 
+## HTTP Proxies
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
@@ -173,3 +176,4 @@ Có rất nhiều mã cụ thể tương ứng từng công dụng khác nhau, �
 - [Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)
 - [HTTP Status code là gì? Các loại http status code](https://viblo.asia/p/http-status-code-la-gi-cac-loai-http-status-code-gDVK2dOXlLj)
 - [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
+- [HTTPS là gì? HTTP và HTTPS khác nhau ở điểm nào?](https://viettelidc.com.vn/tin-tuc/https-la-gi)
