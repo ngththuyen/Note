@@ -14,15 +14,12 @@ HTTP là giao thức không trạng thái (stateless protocol), tức là nhữn
 Là yêu cầu được gửi từ Client đến Server để yêu cầu Server tìm hoặc xử lí thông tin mà Client mong muốn. Mọi thông điệp HTTP (bao gồm Request và Response) đều chứa một hoặc nhiều Header, mỗi Header nằm trên một dòng riêng biệt, sau phần Header sẽ là một dòng trống rồi mới đến phần Body (phần này thì có thể có hoặc không tuỳ method). 
 
 Ví dụ:
-```yaml
+```http
 GET /auth/488/YourDetails.ashx?uid=129 HTTP/1.1
-Accept: application/x-ms-application, image/jpeg, application/xaml+xml,
-image/gif, image/pjpeg, application/x-ms-xbap, application/x-shockwaveflash, */*
+Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/x-shockwaveflash, */*
 Referer: https://mdsec.net/auth/488/Home.ashx
 Accept-Language: en-GB
-User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64;
-Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR
-3.0.30729; .NET4.0C; InfoPath.3; .NET4.0E; FDM; .NET CLR 1.1.4322)
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; InfoPath.3; .NET4.0E; FDM; .NET CLR 1.1.4322)
 Accept-Encoding: gzip, deflate
 Host: mdsec.net
 Connection: Keep-Alive
@@ -36,14 +33,11 @@ Dòng đầu tiên của mỗi HTTP Request được gọi là Request Line, lu�
 
 > Phần 2 trong Request Line ở The Web Application Hacker's Handbook có bảo nó là The requested URL nhưng theo nhiều nguồn trên mạng hiện nay thì thuật ngữ đúng phải là Request-URI hay gọi đơn giản là đường dẫn. Vì URL thực chất phải bao gồm tên miền, giao thức, đường dẫn.. chứ không chỉ có mỗi cái `/auth/488/YourDetails.ashx?uid=129` là biết được URL.
 
-```yaml
-Accept: application/x-ms-application, image/jpeg, application/xaml+xml,
-image/gif, image/pjpeg, application/x-ms-xbap, application/x-shockwaveflash, */*
+```http
+Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/x-shockwaveflash, */*
 Referer: https://mdsec.net/auth/488/Home.ashx
 Accept-Language: en-GB
-User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64;
-Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR
-3.0.30729; .NET4.0C; InfoPath.3; .NET4.0E; FDM; .NET CLR 1.1.4322)
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; InfoPath.3; .NET4.0E; FDM; .NET CLR 1.1.4322)
 Accept-Encoding: gzip, deflate
 Host: mdsec.net
 Connection: Keep-Alive
@@ -58,7 +52,7 @@ Kể từ dòng 2 của ví dụ trở đi, đó là các Header được gửi 
 ## HTTP Responses
 Là thông tin Server trả về Client sau khi nhận được Request từ Client. Cấu trúc của HTTP Response tương tự như Request chỉ khác là thay Request Line thành Status Line. Ví dụ một Response như dưới:
 
-```yaml
+```http
 HTTP/1.1 200 OK
 Date: Tue, 19 Apr 2011 09:23:32 GMT
 Server: Microsoft-IIS/6.0
@@ -118,7 +112,29 @@ HTTP ngày nay hỗ trợ số lượng lớn Header, có cái dành cho cả Re
 - **WWW-Authenticate:** báo cho Client biết phương thức xác thực nào cần dùng để truy cập vào tài nguyên được bảo vệ
 
 ## Cookies
-Cookie HTTP là phần dữ liệu mà Server gửi tới Client, sau đó Browser của Client sẽ lưu trữ Cookie đó và gửi lại cho Server đó ở các Request sau này. Tại sao phải cần Cookie? Như ta đã biết thì HTTP là một stateless protocol tức các truy vấn đều độc lập, chả liên quan gì đến nhau và điều đó khiến cho Server không xác định được các request có phải đến từ cùng 1 Client hay không. Và do đó, Cookie ra đời để xử lí vấn đề này
+Cookie HTTP là phần dữ liệu nhỏ mà Server gửi tới Client, sau đó Browser của Client sẽ lưu trữ Cookie đó và gửi lại cho Server đó ở các Request sau này. Tại sao phải cần Cookie? Như ta đã biết thì HTTP là một stateless protocol tức các truy vấn đều độc lập, chả liên quan gì đến nhau và điều đó khiến cho Server không xác định được các request có phải đến từ cùng 1 Client hay không. Và do đó, Cookie ra đời để xử lí vấn đề này, những công dụng của Cookie ta có thể dễ thấy như việc truy cập vào Facebook trong 1 máy lần đầu thì ta thấy nó bắt đăng nhập nhưng ở một số lần sau thì không còn yêu cầu đăng nhập nữa vì Server đã biết mình là ai thông qua Cookie.
+
+Bên cạnh việc lưu lại phiên đăng nhập, Cookie còn lưu một số thông tin cơ bản khác của Client như giỏ hàng, ngôn ngữ, vị trí,.. tuỳ Web. Cookie còn hỗ trợ các doanh nghiệp theo dõi hành vi người dùng để thực hiện chiến dịch quảng cáo, ta có thể hình dung qua việc ta search 1 sản phẩm trên nền tảng A thì tự nhiên khi sử dụng nền tảng B nó xuất hiện loạt quảng cáo về sản phẩm đó.
+
+Ví dụ một quy trình Cookie được gửi và lưu như sau:
+1. Client gửi HTTP Request đến với Server, sau khi nhận được yêu cầu và xác thực xong thì Server trả về HTTP Response cho Client có một hoặc nhiều hoặc không có Header `Set-Cookie` để đặt Cookie cho Browser Client đó
+```http
+HTTP/2.0 200 OK
+Content-Type: text/html
+Set-Cookie: yummy_cookie=chocolate
+Set-Cookie: tasty_cookie=strawberry
+
+[page content]
+```
+2. Sau khi nhận được Cookie từ Response, Client kể từ các lần HTTP Request sau sẽ sử dụng Header `Cookie` chứa giá trị Cookie đã được set cho tới khi hết hạn hoặc là được set bằng giá trị khác
+```http
+GET /sample_page.html HTTP/2.0
+Host: www.example.org
+Cookie: yummy_cookie=chocolate; tasty_cookie=strawberry
+```
+
+Mỗi Cookie được set thì thường có thời hạn sử dụng, như ở ví dụ trên thì không sử dụng thẻ `Expires` hay `Max-Age` thì Cookie sẽ chỉ tồn tại trong Session (dữ liệu tạm thời của người dùng được lưu ở phía máy chủ) đó, tức là sau khi Client đóng Tab Website thì Cookie bị hết hạn. 
+
 
 ## Tài liệu tham khảo
 - The Web Application Hacker's Handbook
@@ -128,3 +144,5 @@ Cookie HTTP là phần dữ liệu mà Server gửi tới Client, sau đó Brows
 - [HTTP Header là gì? Ví dụ về các trường phổ biến trong Request Header](https://vietnix.vn/http-header-la-gi)
 - [Tìm hiểu về Cookies](https://viblo.asia/p/tim-hieu-ve-cookies-bXP4W5YKL7G)
 - [Session và Cookie](https://viblo.asia/p/tim-hieu-ve-cookies-bXP4W5YKL7G)
+- [Cookies là gì? Công dụng của Cookies trên trình duyệt? Cách xóa và bật quản lý Cookies trên Chrome](https://www.dienmayxanh.com/kinh-nghiem-hay/cookies-la-gi-cach-xoa-va-bat-quan-ly-cookies-tren-1133890)
+- [Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)
