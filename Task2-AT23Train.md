@@ -57,6 +57,8 @@
 <img width="1366" height="705" alt="image" src="https://github.com/user-attachments/assets/a3bc13bf-3700-4814-bf7e-4ae332fb52b7" />
 
 ## Root-me
+### [HTTP - IP restriction bypass](https://www.root-me.org/en/Challenges/Web-Server/HTTP-IP-restriction-bypass)
+
 
 
 
