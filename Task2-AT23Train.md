@@ -1,3 +1,5 @@
+<img align="center" width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/e6db8fc1-388a-4fe1-a36d-f16173e4b753" />
+
 ## picoCTF
 ### [GET aHEAD](https://learn.cylabacademy.org/library/132)
 - Sau khi launch, truy cập vào thì thấy là 1 site có 2 nút, nhấn nút "Choose Red" thì nền hoá đỏ, title đổi thành "Red".
