@@ -56,6 +56,7 @@
 - Duyệt hết thì thấy có 1 đoạn response length khá ngắn trông khá nghi tại value = 18, vào check thì ra flag `academy{3v3ry1_l0v3s_c00k135_90a3a7cb}`
 <img width="1366" height="705" alt="image" src="https://github.com/user-attachments/assets/a3bc13bf-3700-4814-bf7e-4ae332fb52b7" />
 
+## Root-me
 
 
 
