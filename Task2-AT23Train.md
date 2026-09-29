@@ -1,4 +1,4 @@
-<img align="center" width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/e6db8fc1-388a-4fe1-a36d-f16173e4b753" />
+<p align="center"><img align="center" width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/e6db8fc1-388a-4fe1-a36d-f16173e4b753" /></p>
 
 ## picoCTF
 ### [GET aHEAD](https://learn.cylabacademy.org/library/132)
