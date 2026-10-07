@@ -89,7 +89,7 @@ Xem thông tin ở trang gốc thì IP nó là kiểu định dạng gì ấy (:
 
 Vẫn ko ra kết quả gì, có thế ip localhost nó ko phải là 127.0.0.1 mà nó là số nào đó nằm trong phạm vi ip local, thử dùng tool để duyệt trâu xem nhưng tính sương sương thế 3 vị trí từ 0-255 là 255^3 tức 16581375 trường hợp có vẻ ko ổn lắm khi mỗi lần gửi cũng tốn 5-10s rồi.
 
-Bí quá mở lại đề bài, ngồi đọc kĩ, thấy họ có phần related resourese, toàn tiếng anh đọc chả hiểu gì nên mò đại mấy cái IPV4 trong đó rồi đưa vào request header thử, chả hiểu sao lại ra kết quả luôn, quá nhảm chả hiểu sao page là định dạng IP gì đó mà result là ipv4, cũng ko hiểu sao 127.0.0.1 lại ko được, passw là Ip_$po0Fing
+Đi vào ngõ cụt nên dẹp hêt mở lại đề bài, ngồi đọc kĩ, thấy họ có phần related resourese, toàn tiếng anh đọc chả hiểu gì nên mò đại mấy cái IPV4 trong đó rồi đưa vào request header thử, chả hiểu sao lại ra kết quả luôn, quá nhảm chả hiểu sao page là định dạng IP gì đó mà result là ipv4, cũng ko hiểu sao 127.0.0.1 lại ko được, passw là Ip_$po0Fing
 
 Sau khi tìm hiểu sâu thì mới nhận ra bài này qua được là vì tài liệu kia nó nói về dải IP trong mạng nội bộ mang tên RFC 1918, tức vì đề bài nói về mạng trong tổ chức nên sẽ sử dụng dải này, còn cái 127.0.01 kia chỉ là ip riêng của từng máy thôi, nó tự gọi chính nó, nên ko được. 
 
