@@ -58,7 +58,40 @@
 
 ## Root-me
 ### [HTTP - IP restriction bypass](https://www.root-me.org/en/Challenges/Web-Server/HTTP-IP-restriction-bypass)
+Mở site ra, nó là 1 giao diện login kèm một số thông tin, dòng đầu là "Your IP ::ffff:113.177.143.125 do not belong to the LAN." tức bảo, dòng 2 là "Intranet", dòng 3,4,5 là form login cơ bản, và dòng 6 là "You should authenticate because you're not on the LAN."
 
+Tức yêu cầu của bài này là phải tìm cách nào đó biến IP của mình thành IP nội bộ được cho phép mới truy cập được, hoặc là sẽ dùng chức năng đăng nhập mới vào được
+
+Thử điền đại thông tin vào form, nhấn vào thấy chả có thông báo gì hết 
+
+Check mã nguồn, thấy được thông tin là form này là dùng method POST, action trỏ vào chính site hiện tại, 
+
+Mở thử file s.css, có vẻ khôgn có thông tin nào khác ngoài trang trí
+
+Mở thử https://www.root-me.org/?page=externe_header thì thấy đây là cái logo của web làm bài chứ ko có gì
+
+Mở burpsuite, thửu điền đại gtri vào form rồi submit xem có thông tin gì ko. Xem qua thì chả có gì khai thác được, có vẻ chức năng đặng nhập này phế, buộc phải kiếm cách thay đổi IP
+
+Như đề bài nói: 
+
+"Dear colleagues,
+We’re now managing connections to the intranet using private IP addresses, so it’s no longer necessary to login with a username / password when you are already connected to the internal company network.
+Regards,
+The network admin"
+
+Giờ phải kiếm cách nào vào được mạng nội bộ hoặc là gỡ bỏ lớp kiểm tra đó
+
+Tra gg thì thấy có một số request header như X-Forwarded-For: có thể set được IP của người gửi, thử set thành ip của localhost trong gói tin GET khi truy cập vào site xem sao
+
+Thử với đúng X-Forwarded-For: 127.0.0.1 thì page có thay đổi nội dung thật mà chả hiểu sao nó vẫn ko ra flag, thử một số đại lượng khác xem
+
+Xem thông tin ở trang gốc thì IP nó là kiểu định dạng gì ấy (::ffff:113.177.143.125), tức là muốn vô thì phải dùng ip localhost theo đúng dạng của nó. Tra AI thì dạng IP này là dạng kết hợp giưuax v4 và v6, hiểu đơn giản thì mấy cái số sau dấu : cuối cùng là ipv4, giờ thử ::ffff:127.0.0.1 xem
+
+Vẫn ko ra kết quả gì, có thế ip localhost nó ko phải là 127.0.0.1 mà nó là số nào đó nằm trong phạm vi ip local, thử dùng tool để duyệt trâu xem nhưng tính sương sương thế 3 vị trí từ 0-255 là 255^3 tức 16581375 trường hợp có vẻ ko ổn lắm
+
+Bí quá mở lại đề bài, ngồi đọc kĩ, thấy họ có phần related resourese, toàn tiếng anh đọc chả hiểu gì nên mò đại mấy cái số format IPV4 trong đó rồi đưa vào request header thử, chả hiểu sao lại ra kết quả luôn, quá nhảm chả hiểu sao page là định dạng IP gì đó mà result là ipv4, cũng ko hiểu sao 127.0.0.1 lại ko được, passw là Ip_$po0Fing
+
+Sau khi tìm hiểu sâu thì mới nhận ra bài này qua được là vì tài liệu kia nó nói về dải IP trong mạng nội bộ mang tên RFC 1918, tức vì đề bài nói về mạng trong tổ chức nên sẽ sử dụng dải này, còn cái 127.0.01 kia chỉ là ip riêng của từng máy thôi, nó tự gọi chính nó, nên ko được. 
 
 
 
