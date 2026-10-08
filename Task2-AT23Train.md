@@ -122,7 +122,30 @@ Mở burpsuite xem cho rõ, tuy nhiên quả header này là ở phía response,
 
 Ra kết quả thật, passw là HeadersMayBeUseful, nhưng vẫn không hiểu ý nghĩa challenge này lắm khi chỉ cần copy header response rồi đưa vào request
 
+### [HTTP - POST](https://www.root-me.org/en/Challenges/Web-Server/HTTP-POST)
+"Do you know HTTP?
+Find a way to beat the top score!"
 
+Mở site thì thấy là một trang nội dung liên quan tới game Human vs Machine
+
+"Human vs. Machine
+Here is my new game. It's not totally finished but I'm sure nobody can beat me! ;)
+
+Rules: click on the button to hope to generate a great score
+Score to beat: 999999
+
+Give a try
+"
+
+Nó yêu cầu mình phải được 999999 mới thắng, khi thử nhấn cái nút Give a try thì nó bốc random số gì đó. VD một kqua trả về "Hoo tooooo sad, you lost. Your score: 791839! I'm always the best :)"
+
+Check src html, thấy cái form nút random đó sử dụng một đoạn mã js gán vào input name "score" với nội dung là "document.getElementsByName('score')[0].value = Math.floor(Math.random() * 1000001)". Nhìn sơ qua thì nó dùng hàm random rồi nhân 1000001, nếu tích đó là 999999 thì qua, khá md khi cái hàm rand đó chỉ trả về  0 <= x < 1 (AI bảo thế)
+
+Vì form nó ko giấu gì hết nên nhìn qua ta có thể thử với idea là gửi request POST rồi send sang repeater và đổi value input "score" sang 999999.
+
+Có idea rồi, mở burpsuite và triển thôi, tuy nhiên có vẻ idea này ko đúng, thử set score đúng như nó yêu cầu rồi nhưng mà sau khi POST thì nó vẫn chả ra kết quả
+
+À có vẻ hơi ngu, đọc ko kĩ đề tưởng là phải = 999999 nhưng xem lại thì nó yêu cầu là phải đánh bại machine tức score phải lớn hơn, thử lại với 1000000 thì đúng là đã ra flag H7tp_h4s_N0_s3Cr37S_F0r_y0U
 
 
 
