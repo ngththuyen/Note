@@ -106,7 +106,21 @@ Mở burpsuite, dùng Proxy, check history khi truy cập web lần đầu sau �
 
 Đúng như dự đoán, ra luôn kết quả là rr$Li9%L34qd1AAe27, bài này khá đơn giản khi các thông tin đều đã chỉ về việc thay đổi header request
 
+### [HTTP - Headers](https://www.root-me.org/en/Challenges/Web-Server/HTTP-Headers)
+"HTTP response give informations
+Get an administrator access to the webpage"
 
+Mở site ra thì xuất hiện 1 dòng có nội dung là "Content is not the only part of an HTTP response!", nghĩa là nội dung ko phải là phần duy nhất của response, ý của nó chắc là thằng response có nhiều thứ khác ngoài nội dung
+
+Kiểm tra src html,css, tương tự như bài trên là nó cũng chả có cái gì
+
+Như đề bài có để cập về response, mở dev tool check phần network rồi F5 xem response có gì đặc biệt
+
+Đúng như dự đoán, ở đây có 1 header response khá lạ là header-rootme-admin đang mang giá trị none, đây là thứ cần phải khai thác
+
+Mở burpsuite xem cho rõ, tuy nhiên quả header này là ở phía response, ta ko thể tự tuỳ chỉnh. Thử copy nguyên header đó rồi nhét vào header request xem sao
+
+Ra kết quả thật, passw là HeadersMayBeUseful, nhưng vẫn không hiểu ý nghĩa challenge này lắm khi chỉ cần copy header response rồi đưa vào request
 
 
 
