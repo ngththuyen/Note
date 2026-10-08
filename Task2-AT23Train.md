@@ -93,7 +93,18 @@ Vẫn ko ra kết quả gì, có thế ip localhost nó ko phải là 127.0.0.1 
 
 Sau khi tìm hiểu sâu thì mới nhận ra bài này qua được là vì tài liệu kia nó nói về dải IP trong mạng nội bộ mang tên RFC 1918, tức vì đề bài nói về mạng trong tổ chức nên sẽ sử dụng dải này, còn cái 127.0.01 kia chỉ là ip riêng của từng máy thôi, nó tự gọi chính nó, nên ko được. 
 
+### [HTTP - User-agent](https://www.root-me.org/en/Challenges/Web-Server/HTTP-User-agent)
+Mô tả của bài: "Admin is really dumb...", không có gì hữu ích
 
+Mở site, thấy chỉ xuất hiện một dòng "Wrong user-agent: you are not the "admin" browser!", để bài cũng đề cập "user-agent". Có vẻ đó là thông tin xoay quanh bài này
+
+Check src html, thấy chỉ có thẻ h3 chứa thông tin ở trên chứ ko còn gì khác, có vẻ bài này sẽ liên quan tới header user-agent
+
+Check cookie, network từ devtool thì ko có thông tin gì đặc biệt
+
+Mở burpsuite, dùng Proxy, check history khi truy cập web lần đầu sau đó send request GET đó cho repeater rồi thử đổi user-agent sang "admin" như site bảo xem nó trả về gì
+
+Đúng như dự đoán, ra luôn kết quả là rr$Li9%L34qd1AAe27, bài này khá đơn giản khi các thông tin đều đã chỉ về việc thay đổi header request
 
 
 
