@@ -111,13 +111,21 @@ Mô tả của bài: "Admin is really dumb...", không có gì hữu ích
 
 Mở site, thấy chỉ xuất hiện một dòng "Wrong user-agent: you are not the "admin" browser!", để bài cũng đề cập "user-agent". Có vẻ đó là thông tin xoay quanh bài này
 
+<img width="1095" height="304" alt="image" src="https://github.com/user-attachments/assets/0e1d19f1-1a00-49c2-a577-0b23eeb6bfb3" />
+
 Check src html, thấy chỉ có thẻ h3 chứa thông tin ở trên chứ ko còn gì khác, có vẻ bài này sẽ liên quan tới header user-agent
+
+<img width="1236" height="282" alt="image" src="https://github.com/user-attachments/assets/1a888100-6b47-4c56-9649-abf3b2da52fb" />
 
 Check cookie, network từ devtool thì ko có thông tin gì đặc biệt
 
+<img width="1282" height="416" alt="image" src="https://github.com/user-attachments/assets/81cc6be9-596a-4e95-a68b-bcb273a1d402" />
+
 Mở burpsuite, dùng Proxy, check history khi truy cập web lần đầu sau đó send request GET đó cho repeater rồi thử đổi user-agent sang "admin" như site bảo xem nó trả về gì
 
-Đúng như dự đoán, ra luôn kết quả là rr$Li9%L34qd1AAe27, bài này khá đơn giản khi các thông tin đều đã chỉ về việc thay đổi header request
+<img width="1312" height="561" alt="image" src="https://github.com/user-attachments/assets/664b03aa-f63b-45d1-ac07-67ac31ecfc7a" />
+
+Và đúng như dự đoán, ra luôn kết quả là **rr$Li9%L34qd1AAe27**, bài này khá đơn giản khi các thông tin đều đã chỉ về việc thay đổi header request
 
 ### [HTTP - Headers](https://www.root-me.org/en/Challenges/Web-Server/HTTP-Headers)
 "HTTP response give informations
@@ -125,15 +133,21 @@ Get an administrator access to the webpage"
 
 Mở site ra thì xuất hiện 1 dòng có nội dung là "Content is not the only part of an HTTP response!", nghĩa là nội dung ko phải là phần duy nhất của response, ý của nó chắc là thằng response có nhiều thứ khác ngoài nội dung
 
+<img width="970" height="387" alt="image" src="https://github.com/user-attachments/assets/085bca80-f7a8-453a-a255-c105a115e340" />
+
 Kiểm tra src html,css, tương tự như bài trên là nó cũng chả có cái gì
 
-Như đề bài có để cập về response, mở dev tool check phần network rồi F5 xem response có gì đặc biệt
+<img width="1178" height="441" alt="image" src="https://github.com/user-attachments/assets/3de29081-4e9b-4eb0-a3cc-464d67851a24" />
 
-Đúng như dự đoán, ở đây có 1 header response khá lạ là header-rootme-admin đang mang giá trị none, đây là thứ cần phải khai thác
+Như đề bài có để cập về response, mở dev tool check phần network rồi F5 xem response có gì đặc biệt. Và đúng như dự đoán, ở đây có 1 header response khá lạ là header-rootme-admin đang mang giá trị none, đây là thứ cần phải khai thác
 
-Mở burpsuite xem cho rõ, tuy nhiên quả header này là ở phía response, ta ko thể tự tuỳ chỉnh. Thử copy nguyên header đó rồi nhét vào header request xem sao
+<img width="1280" height="550" alt="image" src="https://github.com/user-attachments/assets/b4ea22b8-009c-47ca-8bea-422c5f4a8c4f" />
 
-Ra kết quả thật, passw là HeadersMayBeUseful, nhưng vẫn không hiểu ý nghĩa challenge này lắm khi chỉ cần copy header response rồi đưa vào request
+Mở burpsuite xem cho rõ, tuy nhiên quả header này là ở phía response, ta ko thể tự tuỳ chỉnh kết quả của server trả về mà chỉ chỉnh được cái gửi đi. Thử copy nguyên header đó rồi nhét vào header request xem sao
+
+<img width="1275" height="527" alt="image" src="https://github.com/user-attachments/assets/cc53034c-3121-4688-9d2b-e54e4b9d649d" />
+
+Ra kết quả thật, passw là **HeadersMayBeUseful**, nhưng vẫn không hiểu ý nghĩa challenge này lắm khi chỉ cần copy header response rồi đưa vào request
 
 ### [HTTP - POST](https://www.root-me.org/en/Challenges/Web-Server/HTTP-POST)
 "Do you know HTTP?
@@ -141,26 +155,23 @@ Find a way to beat the top score!"
 
 Mở site thì thấy là một trang nội dung liên quan tới game Human vs Machine
 
-"Human vs. Machine
-Here is my new game. It's not totally finished but I'm sure nobody can beat me! ;)
-
-Rules: click on the button to hope to generate a great score
-Score to beat: 999999
-
-Give a try
-"
+<img width="978" height="353" alt="image" src="https://github.com/user-attachments/assets/0d1589be-3e88-44d8-ac63-606679651361" />
 
 Nó yêu cầu mình phải được 999999 mới thắng, khi thử nhấn cái nút Give a try thì nó bốc random số gì đó. VD một kqua trả về "Hoo tooooo sad, you lost. Your score: 791839! I'm always the best :)"
 
+<img width="889" height="319" alt="image" src="https://github.com/user-attachments/assets/d16e1f19-049b-4c22-9574-1dc35d1205b6" />
+
 Check src html, thấy cái form nút random đó sử dụng một đoạn mã js gán vào input name "score" với nội dung là "document.getElementsByName('score')[0].value = Math.floor(Math.random() * 1000001)". Nhìn sơ qua thì nó dùng hàm random rồi nhân 1000001, nếu tích đó là 999999 thì qua, khá md khi cái hàm rand đó chỉ trả về  0 <= x < 1 (AI bảo thế)
 
-Vì form nó ko giấu gì hết nên nhìn qua ta có thể thử với idea là gửi request POST rồi send sang repeater và đổi value input "score" sang 999999.
+<img width="1162" height="503" alt="image" src="https://github.com/user-attachments/assets/04e0ca36-4c87-4bdd-853d-f9e6c9f77691" />
 
-Có idea rồi, mở burpsuite và triển thôi, tuy nhiên có vẻ idea này ko đúng, thử set score đúng như nó yêu cầu rồi nhưng mà sau khi POST thì nó vẫn chả ra kết quả
+Vì form nó ko giấu gì hết nên nhìn qua ta có thể thử với idea là gửi request POST rồi send sang repeater và đổi value input "score" sang 999999. Có idea rồi, mở burpsuite và triển thôi, tuy nhiên có vẻ idea này ko đúng, thử set score đúng như nó yêu cầu rồi nhưng mà sau khi POST thì nó vẫn chả ra kết quả
 
-À có vẻ hơi ngu, đọc ko kĩ đề tưởng là phải = 999999 nhưng xem lại thì nó yêu cầu là phải đánh bại machine tức score phải lớn hơn, thử lại với 1000000 thì đúng là đã ra flag H7tp_h4s_N0_s3Cr37S_F0r_y0U
+<img width="1198" height="587" alt="image" src="https://github.com/user-attachments/assets/ab3a74fa-d489-4592-a4d1-93e3d28accdd" />
 
+À có vẻ hơi ngu, đọc ko kĩ đề tưởng là phải = 999999 nhưng xem lại thì nó yêu cầu là phải đánh bại machine tức score phải lớn hơn, thử lại với 1000000 thì đúng là đã ra flag **H7tp_h4s_N0_s3Cr37S_F0r_y0U**
 
+<img width="1345" height="512" alt="image" src="https://github.com/user-attachments/assets/ccf256df-863f-49f9-af5c-665565e66f4e" />
 
 
 
