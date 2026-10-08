@@ -188,6 +188,12 @@ Vì form nó ko giấu gì hết nên nhìn qua ta có thể thử với idea l�
 
 <img width="1345" height="512" alt="image" src="https://github.com/user-attachments/assets/ccf256df-863f-49f9-af5c-665565e66f4e" />
 
+## Hoàn thành task 😭
+
+<img width="1159" height="631" alt="image" src="https://github.com/user-attachments/assets/6265189b-a356-477c-968d-2842d923e6b5" />
+<img width="880" height="478" alt="image" src="https://github.com/user-attachments/assets/eed700a2-8c49-4e0d-85ba-99600ba3ec74" />
+
+
 
 
 
