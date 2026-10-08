@@ -44,7 +44,7 @@
 - Kiểm tra mã nguồn, nó có một comment là  `<!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->` ngoài nó ra thì ko có gì đặc biệt, có vẻ giá trị của placeholder này chả có gì
 <img width="1366" height="689" alt="image" src="https://github.com/user-attachments/assets/6e13abe2-277c-4ea1-994e-bc82b84dc608" />
 
-- Dùng dev tool, vào phần cookie thì thấy 1 cookie tên là "name", giá trị home và nhập sai là -1, giá trị khi nhập đúng placeholder là 0, thử đổi value sang 1 và reload trang kết quả sau khi nhập placeholder thì nó ghi là "I love chocolate chip cookies!", thử đổi value sang 2 thì nó ghi là "I love oatmeal raisin cookies!", thử đổi value sang 3 là "I love gingersnap cookies!",... lười duyệt từng thằng quá nên duyệt từ trên xuống để tìm max, check từ 50,40,30 ko thấy, tới 20 thì thấy, thử giảm 30 xuống 29,28 thì 28 là gtri là "I love white chocolate macadamia cookies!". Điều này cho thấy mỗi loại bánh là 1 giá trị cookie khác nhau
+- Dùng dev tool, vào phần cookie thì thấy 1 cookie tên là "name", giá trị cookie khi ta ở page home và page nhập sai là -1, giá trị khi ở page nhập đúng placeholder là 0, thử đổi value sang 1 và reload trang kết quả sau khi nhập placeholder thì nó ghi là "I love chocolate chip cookies!", thử đổi value sang 2 thì nó ghi là "I love oatmeal raisin cookies!", thử đổi value sang 3 là "I love gingersnap cookies!",... lười duyệt từng thằng quá nên duyệt từ trên xuống để tìm max, check từ 50,40,30 ko thấy, tới 20 thì thấy, thử giảm 30 xuống 29,28 thì 28 là gtri là "I love white chocolate macadamia cookies!". Điều này cho thấy mỗi loại bánh là 1 giá trị cookie khác nhau
 <img width="1362" height="683" alt="image" src="https://github.com/user-attachments/assets/1816bcee-2423-413c-b5ee-79fe464d54f6" />
 
 - Không còn thông tin nào khác, thử mở Burpsuite xem khi search thì các thông điệp http sẽ có những thông tin gì. Nhìn log thì thấy sau khi điền 1 gtri đúng vào thanh r search thì nó sẽ set name bằng đúng số của tên cookie đó, sau đó chuyển hướng user sang page /check, ở page này thì nó cũng set cookie những mà là session= gì đó ko hiểu lắm (mấy bài đầu chắc ko đánh đố phần này đâu)
@@ -58,40 +58,53 @@
 
 ## Root-me
 ### [HTTP - IP restriction bypass](https://www.root-me.org/en/Challenges/Web-Server/HTTP-IP-restriction-bypass)
-Mở site ra, nó là 1 giao diện login kèm một số thông tin, dòng đầu là "Your IP ::ffff:113.177.143.125 do not belong to the LAN." tức nó bảo IP mày không thuộc mạng nội bộ, dòng 2 là "Intranet", dòng 3,4,5 là form login cơ bản, và dòng 6 là "You should authenticate because you're not on the LAN."
+Mở site ra, nó là 1 giao diện login kèm một số thông tin, dòng đầu là **"Your IP ::ffff:113.177.143.125 do not belong to the LAN."** tức nó bảo IP mày không thuộc mạng nội bộ, dòng 2 là "Intranet", dòng 3,4,5 là form login cơ bản, và dòng 6 là **"You should authenticate because you're not on the LAN."** Tức yêu cầu của bài này là phải tìm cách nào đó biến IP của mình thành IP nội bộ được cho phép mới truy cập được, hoặc là sẽ dùng chức năng đăng nhập mới vào được
 
-Tức yêu cầu của bài này là phải tìm cách nào đó biến IP của mình thành IP nội bộ được cho phép mới truy cập được, hoặc là sẽ dùng chức năng đăng nhập mới vào được
+<img width="939" height="359" alt="image" src="https://github.com/user-attachments/assets/f9687274-0d63-49d7-909d-4dd2e13b77c3" />
 
 Thử điền đại thông tin vào form, nhấn vào thấy chả có thông báo gì hết 
 
+<img width="853" height="323" alt="image" src="https://github.com/user-attachments/assets/b12da30d-a78a-4317-80bf-465b84f9f988" />
+
 Check mã nguồn, thấy được thông tin là form này là dùng method POST, action trỏ vào chính site hiện tại, 
 
+<img width="1245" height="511" alt="image" src="https://github.com/user-attachments/assets/0f6a0876-e9fa-496d-8964-4aeef0e7c906" />
+
 Mở thử file s.css, có vẻ khôgn có thông tin nào khác ngoài trang trí
+
+<img width="1112" height="572" alt="image" src="https://github.com/user-attachments/assets/36402014-b5ed-47f6-a686-6778d17d9dfd" />
 
 Mở thử https://www.root-me.org/?page=externe_header thì thấy đây là cái logo của web làm bài chứ ko có gì
 
 Mở burpsuite, thửu điền đại gtri vào form rồi submit xem có thông tin gì ko. Xem qua thì chả có gì khai thác được, có vẻ chức năng đặng nhập này phế, buộc phải kiếm cách thay đổi IP
 
-Như đề bài nói: 
+<img width="1259" height="475" alt="image" src="https://github.com/user-attachments/assets/0508fe83-c3a3-415b-9db4-8609dbbb9a8e" />
 
+Như đề bài nói: 
 "Dear colleagues,
 We’re now managing connections to the intranet using private IP addresses, so it’s no longer necessary to login with a username / password when you are already connected to the internal company network.
 Regards,
 The network admin"
 
-Giờ phải kiếm cách nào vào được mạng nội bộ hoặc là gỡ bỏ lớp kiểm tra đó
+Giờ phải kiếm cách nào vào được mạng nội bộ hoặc là gỡ bỏ lớp kiểm tra đó. Tra gg thì thấy có một số request header như X-Forwarded-For: có thể set được IP của người gửi, thử set thành ip của localhost trong gói tin GET khi truy cập vào site xem sao. Thử với đúng X-Forwarded-For: 127.0.0.1 thì page có thay đổi nội dung thật mà chả hiểu sao nó vẫn ko ra flag, thử một số đại lượng khác xem
 
-Tra gg thì thấy có một số request header như X-Forwarded-For: có thể set được IP của người gửi, thử set thành ip của localhost trong gói tin GET khi truy cập vào site xem sao
-
-Thử với đúng X-Forwarded-For: 127.0.0.1 thì page có thay đổi nội dung thật mà chả hiểu sao nó vẫn ko ra flag, thử một số đại lượng khác xem
+<img width="1350" height="553" alt="image" src="https://github.com/user-attachments/assets/45684593-76fc-4a4c-be13-15c00fc566ca" />
 
 Xem thông tin ở trang gốc thì IP nó là kiểu định dạng gì ấy (::ffff:113.177.143.125), tức là muốn vô thì phải dùng ip localhost theo đúng dạng của nó. Tra AI thì dạng IP này là dạng kết hợp giữa v4 và v6, hiểu đơn giản thì mấy cái số sau dấu : cuối cùng là ipv4, giờ thử ::ffff:127.0.0.1 theo format của nó xem
 
-Vẫn ko ra kết quả gì, có thế ip localhost nó ko phải là 127.0.0.1 mà nó là số nào đó nằm trong phạm vi ip local, thử dùng tool để duyệt trâu xem nhưng tính sương sương thế 3 vị trí từ 0-255 là 255^3 tức 16581375 trường hợp có vẻ ko ổn lắm khi mỗi lần gửi cũng tốn 5-10s rồi.
+<img width="1346" height="542" alt="image" src="https://github.com/user-attachments/assets/66cf6a41-0512-4041-a969-0bbb1c071738" />
 
-Đi vào ngõ cụt nên dẹp hêt mở lại đề bài, ngồi đọc kĩ, thấy họ có phần related resourese, toàn tiếng anh đọc chả hiểu gì nên mò đại mấy cái IPV4 trong đó rồi đưa vào request header thử, chả hiểu sao lại ra kết quả luôn, quá nhảm chả hiểu sao page là định dạng IP gì đó mà result là ipv4, cũng ko hiểu sao 127.0.0.1 lại ko được, passw là Ip_$po0Fing
+Vẫn ko ra kết quả gì, có thế ip localhost nó ko phải là 127.0.0.1 mà nó là số nào đó nằm trong phạm vi ip local, thử dùng tool để duyệt trâu xem nhưng tính sương sương thế 3 vị trí từ 0-255 là 255^3 tức 16581375 trường hợp có vẻ ko ổn lắm khi mỗi lần gửi cũng tốn 5-10s rồi. Đi vào ngõ cụt nên dẹp hêt mở lại đề bài, ngồi đọc kĩ, thấy họ có phần **related resourese**.
+
+<img width="1304" height="446" alt="image" src="https://github.com/user-attachments/assets/9541dba6-a746-4c68-9083-29d69dc03ce0" />
+
+Toàn tiếng anh đọc chả hiểu gì nên mò đại mấy cái IPV4 trong đó rồi đưa vào request header thử, chả hiểu sao lại ra kết quả luôn, quá nhảm chả hiểu sao page là định dạng IP gì đó mà result là ipv4, cũng ko hiểu sao 127.0.0.1 lại ko được, passw là **Ip_$po0Fing**
+
+<img width="1289" height="582" alt="image" src="https://github.com/user-attachments/assets/317d61a4-2bda-42c0-bab0-82183f8c9d3f" />
 
 Sau khi tìm hiểu sâu thì mới nhận ra bài này qua được là vì tài liệu kia nó nói về dải IP trong mạng nội bộ mang tên RFC 1918, tức vì đề bài nói về mạng trong tổ chức nên sẽ sử dụng dải này, còn cái 127.0.01 kia chỉ là ip riêng của từng máy thôi, nó tự gọi chính nó, nên ko được. 
+
+<img width="1200" height="602" alt="image" src="https://github.com/user-attachments/assets/915c3c01-550f-4fcf-9d16-1d01affe6021" />
 
 ### [HTTP - User-agent](https://www.root-me.org/en/Challenges/Web-Server/HTTP-User-agent)
 Mô tả của bài: "Admin is really dumb...", không có gì hữu ích
