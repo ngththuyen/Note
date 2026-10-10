@@ -1,4 +1,4 @@
-<img width="1099" height="296" alt="image" src="https://github.com/user-attachments/assets/d4c6ea57-47b0-43d7-b522-39fe9295e081" /># OverTheWire: Bandit
+# OverTheWire: Bandit
 ## Lvl 0
 Đề yêu cầu phải tìm hiểu về SSH để kết nối vào host có Domain là `bandit.labs.overthewire.org` và Port là `2220`, username là `bandit0` và passw là `bandit0`. Bài này ta dùng lệnh SSH với pháp cơ bản là `ssh <username>@<domain> -p <port>`.
 
@@ -112,6 +112,44 @@ Căng mắt ra dò thì thấy ở dưới cùng có 1 file ko bị permission d
 <img width="948" height="448" alt="image" src="https://github.com/user-attachments/assets/064ae07d-4db0-4110-bfa1-926210858efb" />
 
 ## Lvl 7-8
+"The password for the next level is stored in the file data.txt next to the word millionth". Bài này có 1 file data.txt, thử cat thì bên trong nó có 1 mớ nội dung load mãi không hết, có vẻ phải dùng lệnh để tìm ở bên ngoài. 
+
+<img width="686" height="514" alt="image" src="https://github.com/user-attachments/assets/0fd118bb-458e-4b8e-8af7-98a7554a1add" />
+
+Theo hint của overthewire thì ta sẽ phải tìm hiểu lệnh `grep`, lânhj này có tác dụng tìm kiếm chuỗi kí tự trong file ta đưa cho nó.
+
+<img width="710" height="614" alt="image" src="https://github.com/user-attachments/assets/e12016f4-86f0-4e1b-9c30-dee358120981" />
+
+Đọc qua hướng dẫn, dùng `grep 'millionth' data.txt` thì ra luôn passw là `VR1ljMayciFxbnUokuQmJFw6QC9VKtub`
+
+<img width="485" height="125" alt="image" src="https://github.com/user-attachments/assets/7c690da3-2259-4bcc-ba13-6fd1cb10546c" />
+
+## Lvl 8-9
+"The password for the next level is stored in the file data.txt and is the only line of text that occurs only once". Tương tự cũng là tìm chuỗi kí tự trong 1 mớ hỗn độn nhưng lần này đề yêu cầu là tìm dòng kí tự nào chỉ xuất hiện 1 lần. Thử cat file data.txt xem qua nó như thế nào thì nó là file chứa hàng loạt dãy kí tự có độ dài như nhau.
+
+<img width="515" height="557" alt="image" src="https://github.com/user-attachments/assets/c81ce99d-d698-40a8-a2cf-95b74fb48db9" />
+
+Trong hint của web bài tập thì có ghi 1 lệnh là `uniq` có vẻ là viết tắt của từ `unique` mang nghĩa độc nhất. Thử check hd của lệnh này thì đúng như dự đoán
+
+<img width="1357" height="400" alt="image" src="https://github.com/user-attachments/assets/0dd1a12e-8102-4ca4-bf28-153ec8e0fa00" />
+
+Thử dùng lệnh `uniq data.txt` thì có vẻ ko có tác dụng, nó cũng in mớ lộn xộn đó, chắc là sai cú pháp nào đó
+
+<img width="860" height="616" alt="image" src="https://github.com/user-attachments/assets/55233f67-a2d4-4ebd-b204-7dacd37d3685" />
+
+Ngồi mò một hồi thì mới biết có cả vụ này, chắc do đọc không kỹ hướng dẫn của lệnh. 
+
+<img width="735" height="298" alt="image" src="https://github.com/user-attachments/assets/fef61e24-8399-4533-a5cb-28433fe15868" />
+
+Ta thử lại với lệnh sort, sau đó kết hợp toán tử `|` (pipeline) trong Linux để lấy ouput của lệnh phía trước gắn vào lệnh phía sau từ đó ra passw unique là `EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl`. Lưu ý là thằng `uniq` phải thêm tham số `-u` nó mới in cho mình cái độc nhất, chứ nếu ko thêm thì nó sẽ in thêm mấy cái từng lặp lại nhưng bị xoá còn 1 cái. VD như "A A B C C" thì ko có `-` là nó in "A B C" còn có thì nó sẽ in "B" thôi, vì đề bài cần tìm cái xuất hiện 1 lần nên phải dùng nó.
+
+<img width="1334" height="532" alt="image" src="https://github.com/user-attachments/assets/74211d9f-776f-4c5b-93e6-a7048e42377c" />
+
+
+
+
+
+
 
 
 
