@@ -1,4 +1,4 @@
-# OverTheWire: Bandit
+<img width="499" height="112" alt="image" src="https://github.com/user-attachments/assets/9addeb94-6bf6-49f5-9d77-98a87e9bd180" /># OverTheWire: Bandit
 ## Lvl 0
 Đề yêu cầu phải tìm hiểu về SSH để kết nối vào host có Domain là `bandit.labs.overthewire.org` và Port là `2220`, username là `bandit0` và passw là `bandit0`. Bài này ta dùng lệnh SSH với pháp cơ bản là `ssh <username>@<domain> -p <port>`.
 
@@ -141,9 +141,58 @@ Ngồi mò một hồi thì mới biết có cả vụ này, chắc do đọc kh
 
 <img width="735" height="298" alt="image" src="https://github.com/user-attachments/assets/fef61e24-8399-4533-a5cb-28433fe15868" />
 
-Ta thử lại với lệnh sort, sau đó kết hợp toán tử `|` (pipeline) trong Linux để lấy ouput của lệnh phía trước gắn vào lệnh phía sau từ đó ra passw unique là `EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl`. Lưu ý là thằng `uniq` phải thêm tham số `-u` nó mới in cho mình cái độc nhất, chứ nếu ko thêm thì nó sẽ in thêm mấy cái từng lặp lại nhưng bị xoá còn 1 cái. VD như "A A B C C" thì ko có `-` là nó in "A B C" còn có thì nó sẽ in "B" thôi, vì đề bài cần tìm cái xuất hiện 1 lần nên phải dùng nó.
+Ta thử lại với lệnh sort, sau đó kết hợp toán tử `|` (pipeline) trong Linux để lấy ouput của lệnh phía trước gắn vào lệnh phía sau từ đó ra passw unique là `EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl`. Lưu ý là thằng `uniq` phải thêm tham số `-u` nó mới in cho mình cái độc nhất, chứ nếu ko thêm thì nó sẽ in thêm mấy cái từng lặp lại nhưng bị xoá còn 1 cái. VD như "A A B C C" thì ko có `-u` là nó in "A B C" còn có thì nó sẽ in "B" thôi, vì đề bài cần tìm cái xuất hiện 1 lần nên phải dùng nó.
 
 <img width="1334" height="532" alt="image" src="https://github.com/user-attachments/assets/74211d9f-776f-4c5b-93e6-a7048e42377c" />
+
+## Lvl 9-10
+"The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.". Passw là 1 vài kí tự con người đọc đc, đứng sau mấy dấu =. Thử cat thì đúng là ra mớ bùi nhùi thật nhưng mà có vẻ file hơi ngắn nên nhìn xíu là thấy luôn đáp án là `B0s2khmbT9u0geKuOoVGW3JZKhndE3BG`. Không biết bài này họ hướng dẫn dùng tool gì nhưng lỡ ra đáp án rồi nên thôi cho qua.
+
+<img width="1366" height="658" alt="image" src="https://github.com/user-attachments/assets/1d53be0f-808a-4212-b6da-7541be025dc5" />
+
+## Lvl 10-11
+"The password for the next level is stored in the file data.txt, which contains base64 encoded data". Passw được mã hoá dạng base64, thử cat thì đúng là 1 dòng nội dung bị mã hoá
+
+<img width="650" height="132" alt="image" src="https://github.com/user-attachments/assets/43b79248-dd42-46b9-9010-0b8ffbd92142" />
+
+Bài này đơn giản là search google tìm web decode thôi, những vấn đề này mò lệnh Linux lại tốn thời gian mà sợ cũng không đụng nhiều lệnh đó bằng việc search. 
+
+<img width="868" height="515" alt="image" src="https://github.com/user-attachments/assets/b7f932d8-7114-4b2a-b3a0-4b54d40e2ba4" />
+
+Kết quả decode thu được "The password is `pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro`"
+
+## Lvl 11-12
+"The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions". Bài này đọc đề ko hiểu lắm, a-z và A-Z bị xoay 13 vị trí là sao. Thử cat file xem ntn
+
+<img width="539" height="143" alt="image" src="https://github.com/user-attachments/assets/c47ed0df-daef-490c-82c1-42a086e68573" />
+
+Nếu như ý để ở đây là trong bảng mã ascii nó bị +- 13 đơn vị thì ta phải chuyển lại. Nhìn nội dung file ngồi đếm số kí tự từng từ thì biết ngay 3 từ đầu là "The password is" rồi. Mà để kí từ G biến thành T thì theo bảng mã là +13 đơn vị thật. Tức để giải bài này ta cần duyệt từng từ rồi cộng từng kí tự lên 13 đơn vị. Thử viết code C++ rồi cộng các kí tự lên 13 thì có vẻ là gần ra, bài này ko như suy đoán ban đầu là +13 mà nó còn có trường hợp -13.
+
+<img width="1250" height="491" alt="image" src="https://github.com/user-attachments/assets/4a972fb9-93dd-4373-abba-86771c491d47" />
+
+Thử dùng 2 biến để lưu 2 trường hợp rồi xuất ra và đối chiếu, ngồi dò quy luật
+
+<img width="1194" height="420" alt="image" src="https://github.com/user-attachments/assets/b3aa485b-9e4d-4d8c-acfb-ce9c7e2e23fd" />
+
+Ngồi suy luận một hồi dựa vào những manh mối từ các passw của các bài trước đó để loại trừ thì ta có thể kết luận là kí tự mà hợp lệ thì nó 1 là nằm ở +13 2 là nằm ở -13 chứ ko thể nằm ở cả 2 chuỗi. VD như kí tự `Y` đi, nó xuất hiện ở chuỗi 1 tại vị trí gần cuối vì ở vị trí đó chuỗi 2 nó là kí tự ? (Chưa bao giờ xuất hiện ở passw các bài trước), còn ở chuỗi 2 thì thằng `Y` nó bị thay bởi mấy thằng như `s`,`i` do dữ liệu 3 từ đầu phải là The password is.
+
+<img width="499" height="112" alt="image" src="https://github.com/user-attachments/assets/f3dac993-1083-4824-a692-d1c06426e9e4" />
+
+Tiếp tục ngồi loại trừ, rồi lại rơi vào bế tắc, có vị trí cả 2 chuỗi đều là kí tự đặc biệt 😩
+
+<img width="499" height="112" alt="image" src="https://github.com/user-attachments/assets/1e71ec53-6142-4641-8327-6aa9aa781774" />
+
+Bí, ngồi đọc lại đề thì nó có link dẫn tới wiki của ROT13, có vẻ bài này dùng kĩ thuật mã hoá chứ ko đơn giản ngồi cộng trừ như suy đoán. 
+
+![Uploading image.png…]()
+
+
+
+
+
+
+
+
 
 
 
