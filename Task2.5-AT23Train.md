@@ -1,4 +1,4 @@
-<img width="499" height="112" alt="image" src="https://github.com/user-attachments/assets/9addeb94-6bf6-49f5-9d77-98a87e9bd180" /># OverTheWire: Bandit
+# OverTheWire: Bandit
 ## Lvl 0
 Đề yêu cầu phải tìm hiểu về SSH để kết nối vào host có Domain là `bandit.labs.overthewire.org` và Port là `2220`, username là `bandit0` và passw là `bandit0`. Bài này ta dùng lệnh SSH với pháp cơ bản là `ssh <username>@<domain> -p <port>`.
 
@@ -182,9 +182,19 @@ Tiếp tục ngồi loại trừ, rồi lại rơi vào bế tắc, có vị tr�
 
 <img width="499" height="112" alt="image" src="https://github.com/user-attachments/assets/1e71ec53-6142-4641-8327-6aa9aa781774" />
 
-Bí, ngồi đọc lại đề thì nó có link dẫn tới wiki của ROT13, có vẻ bài này dùng kĩ thuật mã hoá chứ ko đơn giản ngồi cộng trừ như suy đoán. 
+Bí, ngồi đọc lại đề thì nó có link dẫn tới wiki của ROT13, có vẻ bài này dùng kĩ thuật mã hoá chứ ko đơn giản ngồi cộng trừ như suy đoán. Nếu như vậy thì ta lên web decode rot13 thôi, ra passw là `GROozWPO8QyN0mGrjUkID0WCYkZiQxrN`
 
-![Uploading image.png…]()
+<img width="1196" height="575" alt="image" src="https://github.com/user-attachments/assets/d01397d0-7dc7-4782-9c7c-91caf60329a7" />
+
+## Lvl 12-13
+"The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)" 
+
+Thử cat file thì nó ra cái đống lộn xộn gì đây @@
+
+<img width="725" height="678" alt="image" src="https://github.com/user-attachments/assets/81873ae0-0545-4351-8a75-eeb88ed4fe50" />
+
+Đề bảo là "which is a hexdump of a file that has been repeatedly compressed", có vẻ cần phải tìm hiểu phạm vi kiến thức này
+
 
 
 
