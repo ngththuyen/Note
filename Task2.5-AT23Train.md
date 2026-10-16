@@ -1,4 +1,4 @@
-# OverTheWire: Bandit
+<img width="630" height="347" alt="image" src="https://github.com/user-attachments/assets/cd0f5fb1-f6ad-44cf-9138-dcf24663bde9" /># OverTheWire: Bandit
 ## Lvl 0
 Đề yêu cầu phải tìm hiểu về SSH để kết nối vào host có Domain là `bandit.labs.overthewire.org` và Port là `2220`, username là `bandit0` và passw là `bandit0`. Bài này ta dùng lệnh SSH với pháp cơ bản là `ssh <username>@<domain> -p <port>`.
 
@@ -189,15 +189,39 @@ Bí, ngồi đọc lại đề thì nó có link dẫn tới wiki của ROT13, c
 ## Lvl 12-13
 "The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)" 
 
-Thử cat file thì nó ra cái đống lộn xộn gì đây @@
+Thử cat file thì nó ra cái đống lộn xộn gì đây @@. Đề bảo là "which is a hexdump of a file that has been repeatedly compressed", có vẻ cần phải tìm hiểu phạm vi kiến thức này
 
 <img width="725" height="678" alt="image" src="https://github.com/user-attachments/assets/81873ae0-0545-4351-8a75-eeb88ed4fe50" />
 
-Đề bảo là "which is a hexdump of a file that has been repeatedly compressed", có vẻ cần phải tìm hiểu phạm vi kiến thức này
+Bài này hơi lòng vòng với cả cũng không quá liên quan tới mảng web vì đây có phần mã máy nên chắc sẽ sơ lược cách giải, sau khi tra thông tin một hổi từ các nguồn cụ thể là AI thì ý bài này là cho 1 tệp nó bị nén qua nhiều lớp định dạng, cài file data.txt ban đầu là nó là mã máy, nó hint là tên file đó chính xác là data2.bin thì mình phải tạo tên file chứa nội dung tương tự rồi kiểm tra định dạng file đó là gì, cái data2.bin thì dugnf lệnh `file` nó check ra là nó thuộc định dạng gzip, biết rồi thì ta đổi tên thành data2.gz rồi unzip, xogn unzip ra lại tới data3,4,5,6... cứ mỗi lần là 1 thằng định dạng khác nhau như tar,bz nhưng cách thức giải vẫn kiểu vậy, kiểm tra định dạng rồi đổi tên file đúng định dạng rồi unzip cho tới khi ra passw là `qQYQiHOBPR8zR61qxYqX45quvihF2uzk`
 
 <img width="1220" height="702" alt="image" src="https://github.com/user-attachments/assets/0ef82b53-ddef-4890-a437-8588dee4136f" />
 
-Bài này hơi lòng vòng với cả cũng không quá liên quan tới mảng web vì đây có phần mã máy nên chắc sẽ sơ lược cách giải, sau khi tra thông tin một hổi từ các nguồn cụ thể là AI thì ý bài này là cho 1 tệp nó bị nén qua nhiều lớp định dạng, cài file data.txt ban đầu là nó là mã máy, nó hint là tên file đó chính xác là data2.bin thì mình phải tạo tên file chứa nội dung tương tự rồi kiểm tra định dạng file đó là gì, cái data2.bin thì dugnf lệnh `file` nó check ra là nó thuộc định dạng gzip, biết rồi thì ta đổi tên thành data2.gz rồi unzip, xogn unzip ra lại tới data3,4,5,6... cứ mỗi lần là 1 thằng định dạng khác nhau như tar,bz nhưng cách thức giải vẫn kiểu vậy, kiểm tra định dạng rồi đổi tên file đúng định dạng rồi unzip cho tới khi ra passw là `qQYQiHOBPR8zR61qxYqX45quvihF2uzk`
+## Lvl 13-14
+"The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Look at the commands that logged you into previous bandit levels, and find out how to use the key for this level.
+If you need help with this level: a hint file can be found in the home directory.
+Make sure to read the error messages as they are informative."
+
+Bài này ý nó bảo là passw cho màn tới là ở trong `/etc/bandit_pass/bandit14` nhưng chỉ được mở bởi user bandit14 trong khi hiện tại đang kết nối vào user bandit13, nên ta phải dùng key SSH private để kết nối vào lvl tiếp theo. Nó bảo nếu bí quá thì còn có hint ở thư mục `home`. Thử dùng `ls` thì thấy có 2 file là `HINT` và `sshkey.private`
+
+<img width="630" height="347" alt="image" src="https://github.com/user-attachments/assets/01bd2727-9527-43e6-813f-ca953542f882" />
+
+Chưa tới mức bí nên sẽ thử cat file key, thì lại ra cái đống lộn xộn này
+
+<img width="691" height="686" alt="image" src="https://github.com/user-attachments/assets/9a35bf93-6ff3-43aa-be64-4d09e603a707" />
+
+Vì bài này liên quan đến ssh nên chắc sẽ phải ngồi mò guide của ssh, tìm thấy quả tham số `-i` gì đấy có nhắc tới priv key nên chắc dùng thử.
+
+<img width="1365" height="182" alt="image" src="https://github.com/user-attachments/assets/1f7d4c28-2de7-4f2d-9286-0c1de4c96a72" />
+
+
+
+
+
+
+
+
+
 
 
 
