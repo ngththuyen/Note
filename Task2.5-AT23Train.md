@@ -195,6 +195,10 @@ Thử cat file thì nó ra cái đống lộn xộn gì đây @@
 
 Đề bảo là "which is a hexdump of a file that has been repeatedly compressed", có vẻ cần phải tìm hiểu phạm vi kiến thức này
 
+<img width="1220" height="702" alt="image" src="https://github.com/user-attachments/assets/0ef82b53-ddef-4890-a437-8588dee4136f" />
+
+Bài này hơi lòng vòng với cả cũng không quá liên quan tới mảng web vì đây có phần mã máy nên chắc sẽ sơ lược cách giải, sau khi tra thông tin một hổi từ các nguồn cụ thể là AI thì ý bài này là cho 1 tệp nó bị nén qua nhiều lớp định dạng, cài file data.txt ban đầu là nó là mã máy, nó hint là tên file đó chính xác là data2.bin thì mình phải tạo tên file chứa nội dung tương tự rồi kiểm tra định dạng file đó là gì, cái data2.bin thì dugnf lệnh `file` nó check ra là nó thuộc định dạng gzip, biết rồi thì ta đổi tên thành data2.gz rồi unzip, xogn unzip ra lại tới data3,4,5,6... cứ mỗi lần là 1 thằng định dạng khác nhau như tar,bz nhưng cách thức giải vẫn kiểu vậy, kiểm tra định dạng rồi đổi tên file đúng định dạng rồi unzip cho tới khi ra passw là `qQYQiHOBPR8zR61qxYqX45quvihF2uzk`
+
 
 
 
